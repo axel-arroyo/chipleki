@@ -8,4 +8,4 @@ npm i -D nodemon sequelize-cli
 ## Frontend
 npx create-react-app frontend --use-npm
 
-npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-dom moment
+npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-dom
