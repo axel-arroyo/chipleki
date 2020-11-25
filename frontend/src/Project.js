@@ -1,5 +1,7 @@
-import {Card, Button} from 'react-bootstrap';
+import {Card, Button, ListGroup} from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import {Link} from 'react-router-dom';
+import moment from 'moment';
 
 function Project(props){
 
@@ -9,15 +11,17 @@ function Project(props){
         <Card style={{ width: '18rem' }}>
         <Card.Body>
             <Card.Title>{id}</Card.Title>
-            <Card.Text>
-                Fecha de entrega prevista: {deliver_date}.
-                Cliente: {id_client}.
-                Analista: {id_analyst}.
-                Manager: {id_manager}.
-                Proyecto creado el día: {createdAt}.
-                Última actualización: {updatedAt}.
-            </Card.Text>
-            <Button href="#" variant="primary">Editar</Button>
+            <ListGroup variant="flush">
+                <ListGroup.Item>Fecha de entrega prevista: {moment(deliver_date).format('DD/MM/YYYY')}</ListGroup.Item>
+                <ListGroup.Item>Cliente: {id_client}</ListGroup.Item>
+                <ListGroup.Item>Analista: {id_analyst}</ListGroup.Item>
+                <ListGroup.Item>Manager: {id_manager}</ListGroup.Item>
+                <ListGroup.Item>Proyecto creado el: {moment(createdAt).format('DD/MM/YYYY')}</ListGroup.Item>
+                <ListGroup.Item>Última actualización: {moment(updatedAt).format('DD/MM/YYYY')}</ListGroup.Item>
+            </ListGroup>
+            {props.flag === "true" &&
+                <Button as={Link} to={"/projects/"+id} variant="primary">Editar</Button>
+            }
         </Card.Body>
         </Card>
     );
