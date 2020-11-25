@@ -10,18 +10,10 @@ npx create-react-app frontend --use-npm
 
 npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-dom moment
 
-<<<<<<< HEAD
-DOGGO
-
-^..^      /
-/_/\_____/
-   /\   /\
-  /  \ /  \
-=======
 # Por Implementar
-* Agregar Requerimientos al proyecto (Historia de Usuario)
+* ~~Agregar Requerimientos al proyecto (Historia de Usuario)~~
+* Vista de Requerimientos (Con redux supongo, similar a vista de proyectos)
 * En el backend agregar autentificación por token (Lo implementan al final del video de login backend), quizás con las restricciones del frontend no es necesario, esto para despúes.
 #### Cosas a futuro
 * Que el usuario ingresado pueda solamente ver sus projectos (y no los ajenos)
 * ¿Se puede editar la información de un proyecto (Cliente, Analista, Fecha de entrega, etc) En caso de que si, falta implementarlo
->>>>>>> 93d5dd743a77962a7a18d670ee05fed615d9c3dd
