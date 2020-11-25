@@ -5,6 +5,7 @@ import Register from "./Register.js";
 import Login from "./Login.js";
 import Projects from "./Projects.js";
 import CreateProject from "./CreateProject.js";
+import ProjectView from "./ProjectView.js";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from './redux/actions/authActions.js';
@@ -54,8 +55,11 @@ function App() {
     </Navbar>
         
         <Switch>
-          <Route path="/projects">
+          <Route exact path="/projects">
             <Projects />
+          </Route>
+          <Route exact path="/projects/:thisId">
+            <ProjectView />
           </Route>
           <Route path="/login">
             <Login />
@@ -63,11 +67,8 @@ function App() {
           <Route path="/register">
             <Register />
           </Route>
-          <Route path="/">
-            <div></div>
-          </Route>
           <Route path="/newProject">
-        	  <CreateProject />
+            <CreateProject />
           </Route>
         </Switch>
       </div>

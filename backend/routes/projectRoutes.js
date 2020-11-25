@@ -38,6 +38,7 @@ router.get("/:id/:id_req", async (req,resp) => {
 router.post("/", async (req,resp) => {
     try {
         const project = await Project.create(req.body);
+        return resp.send(project);
     } catch (error) {
         resp.status(400).send(error);
     }

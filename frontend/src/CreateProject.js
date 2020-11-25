@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
 import Auth from './Auth';
-import moment from 'moment';
 
 function CreateProject(props){
 
@@ -36,9 +35,7 @@ function CreateProject(props){
 			deliver_date: deliver,
 			id_client: idClient,
 			id_analyst: idAnalyst,
-            id_manager: idManager,
-            createdAt: moment().format(),
-            updateAt: moment().format()
+            id_manager: idManager
 		}).then((data) => {
 			setEstado('Proyecto creado');
 			console.log(data);
