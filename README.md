@@ -12,7 +12,7 @@ npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-
 
 # Por Implementar
 * ~~Agregar Requerimientos al proyecto (Historia de Usuario)~~
-  + Intentar detectar automaticamente el Id del Analista que lo crea (fácil si lo hace un analista pues está en su token la info, complicado si lo crea un Manager, hay que pensar eso)
+  + Intentar detectar automaticamente el Id del Analista que lo crea (fácil si lo hace un analista pues está en su token la info, complicado si lo crea un Manager, hay que pensar eso). O si no cambiar que el creado no se obtenga por Id si no por email, pues es único en el sistema, en el peor de los casos borrar esa columna de la BD yera.
 * Vista de Requerimientos (Con redux supongo, similar a vista de proyectos)
 * En el backend agregar autentificación por token (Lo implementan al final del video de login backend), quizás con las restricciones del frontend no es necesario, esto para despúes.
 #### Cosas a futuro
