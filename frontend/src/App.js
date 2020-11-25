@@ -6,6 +6,7 @@ import Login from "./Login.js";
 import Projects from "./Projects.js";
 import CreateProject from "./CreateProject.js";
 import ProjectView from "./ProjectView.js";
+import CreateRequirement from "./CreateRequirement.js";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from './redux/actions/authActions.js';
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route exact path="/projects/:thisId">
             <ProjectView />
+          </Route>
+          <Route path="/projects/:idProject/newRequirement">
+            <CreateRequirement />
           </Route>
           <Route path="/login">
             <Login />
