@@ -12,7 +12,7 @@ npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-
 
 # Por Implementar
 * Agregar Requerimientos al proyecto (Historia de Usuario)
-* En el backend agregar autentificación por token (Lo implementan al final del video de login backend)
+* En el backend agregar autentificación por token (Lo implementan al final del video de login backend), quizás con las restricciones del frontend no es necesario, esto para despúes.
 #### Cosas a futuro
 * Que el usuario ingresado pueda solamente ver sus projectos (y no los ajenos)
 * ¿Se puede editar la información de un proyecto (Cliente, Analista, Fecha de entrega, etc) En caso de que si, falta implementarlo
