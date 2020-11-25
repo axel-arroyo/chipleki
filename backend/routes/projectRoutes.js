@@ -45,9 +45,10 @@ router.post("/", async (req,resp) => {
 });
 
 //Crear requerimientos al proyecto de id especificada
-router.post("/:id/", async (req,resp) => {
+router.post("/requirement/", async (req,resp) => {
     try {
         const requirement = await Requirement.create(req.body);
+        return resp.send(requirement);
     } catch (error) {
         resp.status(400).send(error);
     }
