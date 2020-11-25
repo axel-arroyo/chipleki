@@ -9,3 +9,10 @@ npm i -D nodemon sequelize-cli
 npx create-react-app frontend --use-npm
 
 npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-dom moment
+
+DOGGO
+
+^..^      /
+/_/\_____/
+   /\   /\
+  /  \ /  \
