@@ -40,7 +40,7 @@ function Projects(props){
 			<Row>
 				{projects.map((v) => (
 					<Col key={v.id} md={2}>
-						<Project id={v.id} flag="true" />
+						<Project id={v.id}  flag="true" />
 					</Col>
 				))}
 			</Row>

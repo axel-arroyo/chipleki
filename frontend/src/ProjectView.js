@@ -7,7 +7,8 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { fetchRequirements} from './redux/actions/requirementActions';
 import Requirement from "./Requirement.js";
-
+// v.id 
+// mostrar requerimiento 
 function ProjectView(props){
 
     const isLogged = useSelector((store) => store.authReducer.isLogged); 
@@ -37,8 +38,19 @@ function ProjectView(props){
                 </div>
                 <Image src={plus} className="newIcon"/>
             </Link> 
-			<Row className="justify-content-md-center">
-                
+
+			<Row>
+                {
+                    (requirements != null && requirements.length  > 0)
+                    ?
+                    requirements.filter(v => v.id_project == thisId).map((v) => (
+					<Col key={v.id} md={2}>
+						<Requirement id={v.id} flag="true" />
+					</Col>
+                ))
+                :
+                (<li>No existen los datos</li>)
+                }
 			</Row>
 		</Container>
     ) : (
