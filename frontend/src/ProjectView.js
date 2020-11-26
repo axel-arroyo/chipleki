@@ -7,8 +7,7 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { fetchRequirements} from './redux/actions/requirementActions';
 import Requirement from "./Requirement.js";
-// v.id 
-// mostrar requerimiento 
+
 function ProjectView(props){
 
     const isLogged = useSelector((store) => store.authReducer.isLogged); 
