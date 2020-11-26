@@ -49,8 +49,12 @@ function ProjectView(props){
 					</Col>
                 ))
                 :
+<<<<<<< HEAD
                 <Col>
                 </Col>
+=======
+                (<li>No existen los datos</li>)
+>>>>>>> 494bae4b5fb158abd14b44c4c8662847af1a8101
                 }
 			</Row>
 		</Container>
