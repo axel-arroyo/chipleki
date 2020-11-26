@@ -5,7 +5,7 @@ import moment from 'moment';
 
 function Requirement(props){
 
-    const {id,name,description, finished, estimated_time, deadline, id_project, idAnalyst, priority, createdAt, updatedAt} = useSelector((s) => s.requirementReducer.requirements.find((v) => v.id === props.id));
+    const {id,name,description, finished, estimated_time, deadline, id_project, id_analyst, priority, createdAt, updatedAt} = useSelector((s) => s.requirementReducer.requirements.find((v) => v.id === props.id));
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -13,7 +13,7 @@ function Requirement(props){
             <Card.Title>{id}</Card.Title>
             <ListGroup variant="flush">
                 <ListGroup.Item>Nombre {name}</ListGroup.Item>
-                <ListGroup.Item>Analista: {idAnalyst}</ListGroup.Item>
+                <ListGroup.Item>Analista: {id_analyst}</ListGroup.Item>
                 <ListGroup.Item>Prioridad {priority}</ListGroup.Item>
                 <ListGroup.Item>Proyecto creado el: {moment(createdAt).format('DD/MM/YYYY')}</ListGroup.Item>
                 <ListGroup.Item>Última actualización: {moment(updatedAt).format('DD/MM/YYYY')}</ListGroup.Item>
