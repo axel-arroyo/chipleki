@@ -10,9 +10,8 @@ function Requirement(props){
     return (
         <Card style={{ width: '18rem' }}>
         <Card.Body>
-            <Card.Title>{id}</Card.Title>
+            <Card.Title>{name}</Card.Title>
             <ListGroup variant="flush">
-                <ListGroup.Item>Nombre {name}</ListGroup.Item>
                 <ListGroup.Item>Analista: {id_analyst}</ListGroup.Item>
                 <ListGroup.Item>Prioridad {priority}</ListGroup.Item>
                 <ListGroup.Item>Proyecto creado el: {moment(createdAt).format('DD/MM/YYYY')}</ListGroup.Item>
