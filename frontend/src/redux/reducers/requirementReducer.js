@@ -21,7 +21,7 @@ const requirementReducer = (state = initialState, action) => {
 		case ACTION_UPDATE:
 			return {
 				...state,
-				requirements: state.requirements.map((v) => v.id === action.payload.id ? {...v, finished: action.payload.finished} : v)
+				requirements: state.requirements.map(r => r.id === action.payload.id ? {...r, finished: action.payload.finished} : r)
 			}
 		case ACTION_DELETE:
 			axios.delete('http://localhost:8080/requirement/', {

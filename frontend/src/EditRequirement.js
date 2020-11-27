@@ -18,7 +18,6 @@ function EditRequirement(props) {
 	const [desc, setDesc] = useState(requirement.description);
 	const [estimated, setEstimated] = useState(requirement.estimated_time);
 	const [deadline, setDeadline] = useState(requirement.deadline);
-	const [idAnalyst, setIdAnalyst] = useState(requirement.id_analyst);
 	const [priority, setPriority] = useState(requirement.priority);
 	const [finished, setFinished] = useState(requirement.finished);
     const [estado, setEstado] = useState('');
@@ -30,10 +29,6 @@ function EditRequirement(props) {
 
 	const handleDesc = (e) => {
 		setDesc(e.target.value);
-	}
-
-	const handleIdAnalyst = (e) => {
-		setIdAnalyst(e.target.value);
 	}
 
 	const handleEstimated = (e) => {
@@ -62,7 +57,6 @@ function EditRequirement(props) {
 			estimated_time: estimated,
 			deadline: deadline,
 			id_project: parseInt(Project),
-			id_analyst: idAnalyst,
 			priority: priority
 		}, {
 			headers: {
@@ -103,11 +97,6 @@ function EditRequirement(props) {
 			<Form.Control value={deadline} onChange={handleDeadline} type="date"/>
 		</Form.Group>
 
-		<Form.Group>
-			<Form.Label>Id Analyst</Form.Label>
-			<Form.Control value={idAnalyst} onChange={handleIdAnalyst} type="number"/>
-		</Form.Group>
-
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Priority</Form.Label>
 			<Form.Control value={priority} onChange={handlePriority} as="select">
@@ -130,7 +119,7 @@ function EditRequirement(props) {
 		</Button>
 		</Form>
 	) : (
-        <></>
+        <Alert variant="danger">Acceso Restringido</Alert>
     );
 }
 

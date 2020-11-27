@@ -15,7 +15,6 @@ function CreateRequirement(props){
 	const [desc, setDesc] = useState('');
 	const [estimated, setEstimated] = useState('');
 	const [deadline, setDeadline] = useState('');
-	const [idAnalyst, setIdAnalyst] = useState('');
 	const [priority, setPriority] = useState('Alta');
     const [estado, setEstado] = useState('');
 
@@ -25,10 +24,6 @@ function CreateRequirement(props){
 
 	const handleDesc = (e) => {
 		setDesc(e.target.value);
-	}
-
-	const handleIdAnalyst = (e) => {
-		setIdAnalyst(e.target.value);
 	}
 
 	const handleEstimated = (e) => {
@@ -52,7 +47,6 @@ function CreateRequirement(props){
 			estimated_time: estimated,
 			deadline: deadline,
 			id_project: parseInt(idProject),
-			id_analyst: idAnalyst,
 			priority: priority
 		}, {
 			headers: {
@@ -75,27 +69,22 @@ function CreateRequirement(props){
 			)}
 		<Form.Group>
 			<Form.Label>Name</Form.Label>
-		    <Form.Control onChange={handleName} type="text"/>
+			<Form.Control onChange={handleName} type="text"/>
 		</Form.Group>
 
 		<Form.Group>
-		    <Form.Label>Description</Form.Label>
-		    <Form.Control onChange={handleDesc} type="text"/>
+			<Form.Label>Description</Form.Label>
+			<Form.Control onChange={handleDesc} type="text"/>
 		</Form.Group>
 
         <Form.Group>
-		    <Form.Label>Estimated Time</Form.Label>
-		    <Form.Control onChange={handleEstimated} type="text"/>
+			<Form.Label>Estimated Time</Form.Label>
+			<Form.Control onChange={handleEstimated} type="text"/>
 		</Form.Group>
 
         <Form.Group>
-		    <Form.Label>deadline</Form.Label>
-		    <Form.Control onChange={handleDeadline} type="date"/>
-		</Form.Group>
-
-		<Form.Group>
-		    <Form.Label>Id Analyst</Form.Label>
-		    <Form.Control onChange={handleIdAnalyst} type="number"/>
+			<Form.Label>deadline</Form.Label>
+			<Form.Control onChange={handleDeadline} type="date"/>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
@@ -108,7 +97,7 @@ function CreateRequirement(props){
 		</Form.Group>
 
 		<Button onClick={handleSubmit} variant="primary" type="submit">
-		    Enviar
+			Enviar
 		</Button>
 		</Form>
 	) : (

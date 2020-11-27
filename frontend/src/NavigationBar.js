@@ -26,7 +26,6 @@ function NavigationBar(props){
         } 
     });
 
-    
 
     return(
         <Router>

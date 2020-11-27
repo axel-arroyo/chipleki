@@ -19,8 +19,6 @@ router.post("/", verifySign,async (req,resp) => {
         user = req.user;
         if (user.type === "Manager" || user.type === "Analyst") 
         {
-            console.log(req);
-            console.log(req.body);
             const project = await Project.create(req.body);
             return resp.send(project);
         }

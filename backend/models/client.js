@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Client.hasOne(models.Project,{
-        foreignKey:"id_client"
+        foreignKey:"client_email"
       });
     }
   };

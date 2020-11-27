@@ -5,7 +5,7 @@ import moment from 'moment';
 
 function Project(props){
 
-    const {id,deliver_date,id_client,id_analyst,id_manager,createdAt,updatedAt} = useSelector((s) => s.projectReducer.projects.find((v) => v.id === props.id));
+    const {id,deliver_date,client_email,analyst_email,manager_email,createdAt,updatedAt} = useSelector((s) => s.projectReducer.projects.find(p => p.id === props.id));
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -13,9 +13,9 @@ function Project(props){
             <Card.Title>{id}</Card.Title>
             <ListGroup variant="flush">
                 <ListGroup.Item>Fecha de entrega prevista: {moment(deliver_date).format('DD/MM/YYYY')}</ListGroup.Item>
-                <ListGroup.Item>Cliente: {id_client}</ListGroup.Item>
-                <ListGroup.Item>Analista: {id_analyst}</ListGroup.Item>
-                <ListGroup.Item>Manager: {id_manager}</ListGroup.Item>
+                <ListGroup.Item>Cliente: {client_email}</ListGroup.Item>
+                <ListGroup.Item>Analista: {analyst_email}</ListGroup.Item>
+                <ListGroup.Item>Manager: {manager_email}</ListGroup.Item>
                 <ListGroup.Item>Proyecto creado el: {moment(createdAt).format('DD/MM/YYYY')}</ListGroup.Item>
                 <ListGroup.Item>Última actualización: {moment(updatedAt).format('DD/MM/YYYY')}</ListGroup.Item>
             </ListGroup>

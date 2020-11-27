@@ -31,14 +31,6 @@ module.exports = {
           as:"id_project"
         }
       },
-      id_analyst: {
-        type: Sequelize.INTEGER,
-        references:{
-          model:"Analysts",
-          key:"id",
-          as:"id_analyst"
-        }
-      },
       priority: {
         type: Sequelize.STRING
       },

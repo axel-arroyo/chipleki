@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const verifySign = require("./verifyToken");
-
 const { Requirement } = require("../models");
 
 //Obtener todos los requerimientos
@@ -17,7 +16,6 @@ router.get("/", verifySign,async (req,resp) => {
 //Actualizar requerimiento
 router.post("/edit", verifySign, async (req,resp) => {
     try {
-        console.log(req.body);
         const requirement = await Requirement.findOne({
             where:{
                 id: req.body.id,

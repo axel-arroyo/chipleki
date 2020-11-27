@@ -11,9 +11,6 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Requirement.belongsTo(models.Analyst,{
-        foreignKey:"id_analyst"
-      });
       Requirement.belongsTo(models.Project,{
         foreignKey:"id_project"
       });
@@ -26,7 +23,6 @@ module.exports = (sequelize, DataTypes) => {
     estimated_time: DataTypes.STRING,
     deadline: DataTypes.DATEONLY,
     id_project: DataTypes.INTEGER,
-    id_analyst: DataTypes.INTEGER,
     priority: DataTypes.STRING
   }, {
     sequelize,

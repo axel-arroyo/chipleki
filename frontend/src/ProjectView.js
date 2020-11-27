@@ -51,7 +51,7 @@ function ProjectView(props){
                 {
                     (requirements != null && requirements.length  > 0)
                     ?
-                    requirements.filter(v => v.id_project == thisId).map((v) => (
+                    requirements.filter(r => r.id_project == thisId).map((v) => (
 					<Col key={v.id} md={2}>
 						<Requirement id={v.id} flag="true" />
 					</Col>

@@ -23,7 +23,7 @@ function Requirement(props){
         handleClose();
     }
 
-    const {id,name,description, finished, estimated_time, deadline, id_project, id_analyst, priority, createdAt, updatedAt} = useSelector((s) => s.requirementReducer.requirements.find((v) => v.id === props.id));
+    const {id,name,description, finished, estimated_time, deadline, id_project, priority, createdAt, updatedAt} = useSelector((s) => s.requirementReducer.requirements.find((v) => v.id === props.id));
 
     return (
         <Card style={{ width: '18rem' }}>
@@ -55,7 +55,6 @@ function Requirement(props){
             </Card.Title>
             <ListGroup variant="flush">
                 <ListGroup.Item>Descripción: {description}</ListGroup.Item>
-                <ListGroup.Item>Analista: {id_analyst}</ListGroup.Item>
                 <ListGroup.Item>Prioridad: {priority}</ListGroup.Item>
                 <ListGroup.Item>Proyecto creado el: {moment(createdAt).format('DD/MM/YYYY')}</ListGroup.Item>
                 <ListGroup.Item>Última actualización: {moment(updatedAt).format('DD/MM/YYYY')}</ListGroup.Item>
