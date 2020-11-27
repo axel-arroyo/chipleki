@@ -6,8 +6,9 @@ import { useHistory, useParams } from 'react-router-dom';
 
 function CreateRequirement(props){
 
-    var accountType = User().type;
-	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const user = User();
+    const accountType = user ? user.type : undefined;
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
 
 	const {idProject} = useParams();
 	const history = useHistory();

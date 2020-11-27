@@ -6,8 +6,9 @@ import { useHistory } from "react-router-dom";
 
 function CreateProject(props){
 
-    var accountType = User().type;
-	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const user = User();
+    const accountType = user ? user.type : undefined;
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const [deliver, setDeliver] = useState('');
 	const [client, setClient] = useState('');
 	const [analyst, setAnalyst] = useState('');

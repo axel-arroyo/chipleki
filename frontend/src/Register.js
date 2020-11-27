@@ -5,8 +5,9 @@ import User from './User';
 
 function Register(props) {
 
-	var accountType = User().type;
-	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const user = User();
+	const accountType = user ? user.type : undefined;
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
 	const [name, setName] = useState('');

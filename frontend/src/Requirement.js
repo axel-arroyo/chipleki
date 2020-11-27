@@ -9,7 +9,8 @@ import User from './User';
 
 function Requirement(props){
 
-    var accountType = User().type;
+    const user = User();
+    const accountType = user ? user.type : undefined;
 	const canDelete = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
 
     const [show,setShow] = useState(false);

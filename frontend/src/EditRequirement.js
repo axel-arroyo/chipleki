@@ -7,13 +7,14 @@ import User from './User';
 
 function EditRequirement(props) {
 
-    var accountType = User().type;
-	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const user = User();
+    const accountType = user ? user.type : undefined;
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const {Project,Requirement} = useParams();
 	const history = useHistory();
 
-    const requirements = useSelector((store) => store.requirementReducer.requirements);
-    const requirement = requirements.find(req => req.id == Requirement);
+	const requirements = useSelector((store) => store.requirementReducer.requirements);
+	const requirement = requirements.find(req => req.id == Requirement);
 
     const [name, setName] = useState(requirement.name);
 	const [desc, setDesc] = useState(requirement.description);

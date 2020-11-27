@@ -1,6 +1,5 @@
 import { useSelector, useDispatch} from 'react-redux';
 import { Col, Row, Container, Alert, Image } from "react-bootstrap";
-import Project from "./Project.js";
 import {Link, useParams} from 'react-router-dom';
 import plus from './images/plus.png';
 import axios from 'axios';
@@ -11,8 +10,10 @@ import User from './User';
 
 function ProjectView(props){
 
-    var accountType = User().type;
-	const canCreate = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
+    const user = User();
+    const accountType = user ? user.type : undefined;
+    const canCreate = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
+    
     const isLogged = useSelector((store) => store.authReducer.isLogged); 
     const {thisId} = useParams();
     const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function ProjectView(props){
 					console.log(err);
 				});
 		}
-    }, [dispatch, isLogged]);
+    }, []);
     
     return isLogged ?(
         <Container fluid>
@@ -65,8 +66,6 @@ function ProjectView(props){
     ) : (
         <Alert variant="danger">Necesitas permisos para acceder.</Alert>
     );
-
-   
 }
 
 export default ProjectView;
