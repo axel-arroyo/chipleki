@@ -20,5 +20,5 @@ npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-
 * ~~En el backend agregar autentificación por token (Lo implementan al final del video de login backend), quizás con las restricciones del frontend no es necesario, esto para despúes.~~
 #### Cosas a futuro
 * ~~Quizás cambiar la Primary Key de los usuarios, managers, etc. al correo, ya deberían ser únicos y es más intuitivo que una ID.~~
-* Que el usuario ingresado pueda solamente ver sus projectos (y no los ajenos)
+* ~~Que el usuario ingresado pueda solamente ver sus projectos (y no los ajenos)~~
 * ¿Se puede editar la información de un proyecto (Cliente, Analista, Fecha de entrega, etc) En caso de que si, falta implementarlo
