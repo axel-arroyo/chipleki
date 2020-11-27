@@ -1,6 +1,16 @@
 export const ACTION_FETCH = 'ACTION_FETCH';
 export const ACTION_UPDATE = 'ACTION_UPDATE';
 export const ACTION_CREATE = 'ACTION_CREATE';
+export const ACTION_DELETE = 'ACTION_DELETE';
+
+export const deleteRequirement = (requirementId) =>{
+	return{
+		type: ACTION_DELETE,
+		payload: {
+			id: requirementId,
+		}
+	}
+}
 
 export const fetchRequirements = (requirements) => {
 	return {

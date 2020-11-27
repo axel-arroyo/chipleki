@@ -45,7 +45,7 @@ function CreateRequirement(props){
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post('http://localhost:8080/project/requirement', {
+		axios.post('http://localhost:8080/requirement', {
 			name: name,
 			description: desc,
 			finished: false,
@@ -54,6 +54,10 @@ function CreateRequirement(props){
 			id_project: parseInt(idProject),
 			id_analyst: idAnalyst,
 			priority: priority
+		}, {
+			headers: {
+				"auth-token": localStorage.getItem("token"),
+			}
 		}).then((data) => {
 			setEstado('Requerimiento creado');
 			console.log(data);

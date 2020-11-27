@@ -1,28 +1,55 @@
 const express = require("express");
 const router = express.Router();
+const verifySign = require("./verifyToken");
 
 const { Requirement } = require("../models");
 
-router.get("/", async (req,resp) => {
+//Obtener todos los requerimientos
+router.get("/", verifySign,async (req,resp) => {
     try {
-        const allRequirement = await Requirement.findAll({where:req.query});
+        const allRequirement = await Requirement.findAll();
         resp.send(allRequirement);
     } catch (error) {
         resp.status(400).send("Error al hacer una query a la base de datos");
     }
 });
-router.get("/:id", async (req,resp) => {
+
+//Actualizar requerimiento
+router.post("/edit", verifySign, async (req,resp) => {
     try {
-        const allRequirement = await Requirement.findAll({where:req.params});
-        console.log(req.params);
-        resp.send(allRequirement);
+        console.log(req.body);
+        const requirement = await Requirement.findOne({
+            where:{
+                id: req.body.id,
+            }
+        });
+        requirement.update(req.body)
+        resp.send("Requerimiento actualizado");
     } catch (error) {
-        resp.status(400).send("Error al hacer una query a la base de datos");
+        resp.status(400).send("No se encuentra el requerimiento");
     }
 });
-router.post("/",async (req,resp) =>{
+
+//Borrar requerimiento
+router.delete("/",verifySign, async (req,resp) => {
     try {
-        const genRequirement = await Requirement.create(req.body);
+        const requirement = await Requirement.findOne({
+            where:{
+                id: req.body.id,
+            }
+        });
+        requirement.destroy();
+        resp.send("Requerimiento borrado");
+    } catch (error) {
+        resp.status(400).send("No se encuentra el requerimiento");
+    }
+});
+
+//Crear requerimiento
+router.post("/", verifySign,async (req,resp) =>{
+    try {
+        const requirement = await Requirement.create(req.body);
+        return resp.send(requirement);
     } catch (error) {
         resp.status(400).send(error);
     }

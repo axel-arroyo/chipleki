@@ -2,8 +2,9 @@ const router = require("express").Router();
 const { User, Manager, Analyst, Client } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const verifySign = require("./verifyToken");
 
-router.post("/register", async (req, res) => {
+router.post("/register", verifySign, async (req, res) => {
     try {
         const userType = req.body.type;
         const emailValid = await User.findOne({

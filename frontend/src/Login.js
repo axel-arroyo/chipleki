@@ -25,7 +25,6 @@ function Login(props) {
 			email: email,
 			pass: pass,
 		}).then((response) => {
-			console.log(response.data)
 			dispatch(login());
 			setEstado("OK");
 			localStorage.setItem('token', response.data);

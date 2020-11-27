@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { Project, Requirement } = require("../models");
+const verifySign = require("./verifyToken");
 
-//Todos los proyectos
-router.get("/", async (req,resp) => {
+//Obtener todos los proyectos
+router.get("/", verifySign, async (req,resp) => {
     try {
         const allProject = await Project.findAll();
         resp.send(allProject);
@@ -13,30 +14,32 @@ router.get("/", async (req,resp) => {
 });
 
 //Crear proyecto
-router.post("/", async (req,resp) => {
+router.post("/", verifySign,async (req,resp) => {
     try {
-        const project = await Project.create(req.body);
-        return resp.send(project);
+        user = req.user;
+        if (user.type === "Manager" || user.type === "Analyst") 
+        {
+            console.log(req);
+            console.log(req.body);
+            const project = await Project.create(req.body);
+            return resp.send(project);
+        }
+        return resp.status(401).send("No tienes los permisos para crear un proyecto")
     } catch (error) {
         resp.status(400).send(error);
     }
 });
 
-//Todos los Requerimientos
-router.get("/requirement/", async (req,resp) => {
-    try {
-        const requirements = await Requirement.findAll();
-        resp.send(requirements);
-    } catch (error) {
-        resp.status(400).send("Error al hacer una query a la base de datos");
-    }
-});
-
 //Crear requerimientos al proyecto de id especificada
-router.post("/requirement/", async (req,resp) => {
+router.post("/requirement/",verifySign, async (req,resp) => {
     try {
-        const requirement = await Requirement.create(req.body);
-        return resp.send(requirement);
+        user = req.user;
+        if (user.type === "Manager" || user.type === "Analyst")
+        {
+            const requirement = await Requirement.create(req.body);
+            return resp.send(requirement);
+        }
+        return resp.status(401).send("No tienes los permisos para crear un requerimiento");
     } catch (error) {
         resp.status(400).send(error);
     }

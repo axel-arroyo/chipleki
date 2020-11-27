@@ -2,15 +2,17 @@ import { useSelector, useDispatch} from 'react-redux';
 import { Col, Row, Container, Alert, Image } from "react-bootstrap";
 import Project from "./Project.js";
 import {Link, useParams} from 'react-router-dom';
-import plus from './plus.png';
+import plus from './images/plus.png';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { fetchRequirements} from './redux/actions/requirementActions';
 import Requirement from "./Requirement.js";
-// v.id 
-// mostrar requerimiento 
+import Auth from './Auth';
+
 function ProjectView(props){
 
+    var accountType = Auth();
+	const canCreate = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
     const isLogged = useSelector((store) => store.authReducer.isLogged); 
     const {thisId} = useParams();
     const dispatch = useDispatch();
@@ -19,7 +21,10 @@ function ProjectView(props){
     
     useEffect(() => {
 		if (isLogged) {
-			axios.get("http://localhost:8080/project/requirement", {
+			axios.get("http://localhost:8080/requirement", { 
+                headers: {
+                    "auth-token": localStorage.getItem("token"),
+            }
 				})
 				.then((data) => {
 					dispatch(fetchRequirements(data.data));
@@ -32,13 +37,16 @@ function ProjectView(props){
     
     return isLogged ?(
         <Container fluid>
+            {canCreate ? 
             <Link to={"/projects/"+thisId+"/newRequirement"}>
                 <div className="newProject">
                     Crear Requerimiento
                 </div>
                 <Image src={plus} className="newIcon"/>
             </Link> 
-
+            :
+            <></>
+            }
 			<Row>
                 {
                     (requirements != null && requirements.length  > 0)

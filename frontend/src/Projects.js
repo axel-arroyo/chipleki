@@ -1,16 +1,18 @@
 import React, { useEffect } from 'react';
 import "./styles.css";
 import axios from 'axios';
-import plus from './plus.png';
+import plus from './images/plus.png';
 import Project from './Project.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row, Container, Alert, Image } from "react-bootstrap";
 import { fetchProjects } from './redux/actions/projectActions';
 import {Link} from 'react-router-dom';
-
+import Auth from './Auth';
 
 function Projects(props){
 
+	var accountType = Auth();
+	const canCreate = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
     const isLogged = useSelector((store) => store.authReducer.isLogged);
 	const projects = useSelector((store) => store.projectReducer.projects);
 	const dispatch = useDispatch();
@@ -18,6 +20,9 @@ function Projects(props){
     useEffect(() => {
 		if (isLogged) {
 			axios.get("http://localhost:8080/project", {
+				headers: {
+				'auth-token': localStorage.getItem('token'),
+			}
 				})
 				.then((data) => {
 					console.log(data);
@@ -27,16 +32,20 @@ function Projects(props){
 					console.log(err);
 				});
 		}
-	}, [dispatch, isLogged]);
+	}, []);
 
     return isLogged ? (
         <Container fluid>
+			{canCreate ? 
             <Link to="/newProject">
                 <div className="newProject">
                     Crear Proyecto
                 </div>
                 <Image src={plus} className="newIcon"/>
-            </Link> 
+			</Link> 
+			:
+			<></>
+			}
 			<Row>
 				{
 				projects !== undefined ?

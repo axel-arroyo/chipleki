@@ -36,6 +36,10 @@ function CreateProject(props){
 			id_client: idClient,
 			id_analyst: idAnalyst,
             id_manager: idManager
+		}, {
+			headers: {
+				"auth-token": localStorage.getItem("token"),
+			}
 		}).then((data) => {
 			setEstado('Proyecto creado');
 			console.log(data);

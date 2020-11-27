@@ -36,6 +36,10 @@ function Register(props) {
 			pass: pass,
 			name: name,
 			type: type
+		}, {
+			headers: {
+				"auth-token": localStorage.getItem("token"),
+			}
 		}).then((data) => {
 			setEstado('Usuario registrado');
 		}).catch((error) => {
