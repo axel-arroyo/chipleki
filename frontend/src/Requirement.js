@@ -5,11 +5,11 @@ import {Link} from 'react-router-dom';
 import moment from 'moment';
 import trash from './images/trash.png';
 import {deleteRequirement} from './redux/actions/requirementActions';
-import Auth from './Auth';
+import User from './User';
 
 function Requirement(props){
 
-    var accountType = Auth();
+    var accountType = User().type;
 	const canDelete = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
 
     const [show,setShow] = useState(false);

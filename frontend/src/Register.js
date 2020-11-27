@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
-import Auth from './Auth';
+import User from './User';
 
 function Register(props) {
 
-	var accountType = Auth();
+	var accountType = User().type;
 	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');

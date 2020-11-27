@@ -3,11 +3,11 @@ import { useSelector} from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
 import {Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
-import Auth from './Auth';
+import User from './User';
 
 function EditRequirement(props) {
 
-    var accountType = Auth();
+    var accountType = User().type;
 	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const {Project,Requirement} = useParams();
 	const history = useHistory();

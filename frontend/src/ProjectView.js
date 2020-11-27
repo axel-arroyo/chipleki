@@ -7,11 +7,11 @@ import axios from 'axios';
 import React, { useEffect } from 'react';
 import { fetchRequirements} from './redux/actions/requirementActions';
 import Requirement from "./Requirement.js";
-import Auth from './Auth';
+import User from './User';
 
 function ProjectView(props){
 
-    var accountType = Auth();
+    var accountType = User().type;
 	const canCreate = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
     const isLogged = useSelector((store) => store.authReducer.isLogged); 
     const {thisId} = useParams();

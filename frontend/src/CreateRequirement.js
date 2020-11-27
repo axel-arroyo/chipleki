@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
-import Auth from './Auth';
+import User from './User';
 import { useHistory, useParams } from 'react-router-dom';
 
 function CreateRequirement(props){
 
-    var accountType = Auth();
+    var accountType = User().type;
 	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 
 	const {idProject} = useParams();
