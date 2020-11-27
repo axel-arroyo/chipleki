@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
 import Auth from './Auth';
+import { useHistory } from "react-router-dom";
 
 function CreateProject(props){
 
@@ -11,7 +12,8 @@ function CreateProject(props){
 	const [client, setClient] = useState('');
 	const [analyst, setAnalyst] = useState('');
     const [manager, setManager] = useState('');
-    const [estado, setEstado] = useState('');
+	const [estado, setEstado] = useState('');
+	const history = useHistory();
 
 	const handleDeliver = (e) => {
 		setDeliver(e.target.value);
@@ -42,7 +44,7 @@ function CreateProject(props){
 			}
 		}).then((data) => {
 			setEstado('Proyecto creado');
-			console.log(data);
+			history.push("/projects");
 		}).catch((error) => {
 			setEstado('Error creando el proyecto');
 		});

@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import {login} from './redux/actions/authActions.js';
+import { useHistory } from "react-router-dom";
 
 function Login(props) {
 	
@@ -10,6 +11,7 @@ function Login(props) {
 	const [pass, setPass] = useState('');
 	const [estado, setEstado] = useState('');
 	const dispatch = useDispatch();
+	const history = useHistory();
 
 	const handleEmail = (e) => {
 		setEmail(e.target.value);
@@ -27,7 +29,8 @@ function Login(props) {
 		}).then((response) => {
 			dispatch(login());
 			setEstado("OK");
-			localStorage.setItem('token', response.data);
+			localStorage.setItem('token', response.headers["auth-token"]);
+			history.push("/home");
 		})
 		.catch(error => {
 			setEstado("Usuario o contrasena incorrecto");

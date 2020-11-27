@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector} from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import {Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import Auth from './Auth';
@@ -9,7 +9,8 @@ function EditRequirement(props) {
 
     var accountType = Auth();
 	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
-    const {Project,Requirement} = useParams();
+	const {Project,Requirement} = useParams();
+	const history = useHistory();
 
     const requirements = useSelector((store) => store.requirementReducer.requirements);
     const requirement = requirements.find(req => req.id == Requirement);
@@ -64,7 +65,7 @@ function EditRequirement(props) {
 			}
 		}).then((data) => {
 			setEstado('Requerimiento actualizado');
-			console.log(data);
+			history.push("/projects/"+Project);
 		}).catch((error) => {
 			setEstado('Error actualizando el requerimiento');
 		});

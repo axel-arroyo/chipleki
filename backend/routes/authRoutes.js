@@ -67,7 +67,7 @@ router.post("/login", async (req, res) => {
             return res.status(400).send("usuario o contrasena equivocada");
         }
         const token = jwt.sign({email:user.email,type:user.type,name:user.name}, process.env.SECRET_TOKEN);
-        return res.send(token);
+        return res.header('Access-Control-Expose-Headers', 'auth-token').header("auth-token",token).send(token);
     }
     catch (error) {
         return res.status(400).send(error);

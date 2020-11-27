@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
 import Auth from './Auth';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 
 function CreateRequirement(props){
 
@@ -10,6 +10,7 @@ function CreateRequirement(props){
 	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 
 	const {idProject} = useParams();
+	const history = useHistory();
 
 	const [name, setName] = useState('');
 	const [desc, setDesc] = useState('');
@@ -54,7 +55,7 @@ function CreateRequirement(props){
 			}
 		}).then((data) => {
 			setEstado('Requerimiento creado');
-			console.log(data);
+			history.push("/projects/"+idProject);
 		}).catch((error) => {
 			setEstado('Error creando el requerimiento');
 		});
