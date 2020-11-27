@@ -11,10 +11,14 @@ import User from './User';
 
 function Projects(props){
 
-	const user = User();
-	const accountType = user.type;
+	const isLogged = useSelector((store) => store.authReducer.isLogged);
+	var user = undefined;
+	var accountType = undefined;
+	if (isLogged){
+		user = User();
+		accountType = user.type;
+	}
 	const canCreate = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
-    const isLogged = useSelector((store) => store.authReducer.isLogged);
 	const projects = useSelector((store) => store.projectReducer.projects);
 	const dispatch = useDispatch();
 	
