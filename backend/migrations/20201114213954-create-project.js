@@ -11,28 +11,28 @@ module.exports = {
       deliver_date: {
         type: Sequelize.DATEONLY
       },
-      id_client: {
-        type: Sequelize.INTEGER,
+      client_email: {
+        type: Sequelize.STRING,
         references:{
           model:"Clients",
-          key:"id",
-          as:"id_client"
+          key:"email",
+          as:"client_email"
         }
       },
-      id_analyst: {
-        type: Sequelize.INTEGER,
+      analyst_email: {
+        type: Sequelize.STRING,
         references:{
           model:"Analysts",
-          key:"id",
-          as:"id_analyst"
+          key:"email",
+          as:"analyst_email"
         }
       },
-      id_manager: {
-        type: Sequelize.INTEGER,
+      manager_email: {
+        type: Sequelize.STRING,
         references:{
           model:"Managers",
-          key:"id",
-          as:"id_manager"
+          key:"email",
+          as:"manager_email"
         }
       },
       createdAt: {

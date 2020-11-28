@@ -12,13 +12,13 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Project.belongsTo(models.Client,{
-        foreignKey:"id_client"
+        foreignKey:"client_email"
       });
       Project.belongsTo(models.Manager,{
-        foreignKey:"id_manager"
+        foreignKey:"manager_email"
       });
       Project.belongsTo(models.Analyst,{
-        foreignKey:"id_analyst"
+        foreignKey:"analyst_email"
       });
       Project.hasMany(models.Requirement,{
         foreignKey:"id_project"
@@ -27,9 +27,9 @@ module.exports = (sequelize, DataTypes) => {
   };
   Project.init({
     deliver_date: DataTypes.DATEONLY,
-    id_client: DataTypes.INTEGER,
-    id_analyst: DataTypes.INTEGER,
-    id_manager: DataTypes.INTEGER
+    client_email: DataTypes.STRING,
+    analyst_email: DataTypes.STRING,
+    manager_email: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Project',
