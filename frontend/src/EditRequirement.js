@@ -48,7 +48,12 @@ function EditRequirement(props) {
 	const handleFinished = (e) => {
 		setFinished(e.target.value);
 	}
-    
+	
+	const handleBack = (e) => {
+		history.push("/projects/"+Project);
+
+	}
+
     const handleSubmit = (e) => {
 		e.preventDefault();
 		axios.post('http://localhost:8080/requirement/edit', {
@@ -81,44 +86,67 @@ function EditRequirement(props) {
 			)}
 		<Form.Group>
 			<Form.Label>Name</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={name} onChange={handleName} type="text"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group>
 			<Form.Label>Description</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={desc} onChange={handleDesc} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>Estimated Time</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={estimated} onChange={handleEstimated} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>deadline</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={deadline} onChange={handleDeadline} type="date"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Priority</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={priority} onChange={handlePriority} as="select">
 				<option value="Alta">Alta</option>
 				<option value="Media">Media</option>
 				<option value="Baja">Baja</option>
 			</Form.Control>
+			</div>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Estado</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={finished} onChange={handleFinished} as="select">
 				<option value={true}>Finalizado</option>
 				<option value={false}>No Finalizado</option>
 			</Form.Control>
+			</div>
 		</Form.Group>
 
-		<Button onClick={handleSubmit} variant="primary" type="submit">
+		<Button onClick={handleSubmit} variant="primary mr-3" type="submit">
 			Enviar
 		</Button>
+
+		<Button onClick={handleBack} variant="danger" type="submit">
+			Cancelar
+		</Button>
+
 		</Form>
 	) : (
         <Alert variant="danger">Acceso Restringido</Alert>
