@@ -27,7 +27,6 @@ function Projects(props){
 			}
 				})
 				.then((data) => {
-					console.log(data);
 					dispatch(fetchProjects(data.data));
 				})
 				.catch((err) => {
@@ -43,8 +42,8 @@ function Projects(props){
                 &nbsp;
 				<Button variant="secondary" size="sm" block>
 					Crear proyecto
-  				</	Button>
-				  &nbsp;
+				</	Button>
+				&nbsp;
 			</Link> 
 			:
 			<></>

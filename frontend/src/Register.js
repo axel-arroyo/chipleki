@@ -10,9 +10,10 @@ function Register(props) {
 	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
-	const [name, setName] = useState('');
-	const [type, setType] = useState('Manager');
+	const [name, setName] = useState(null);
+	const [type, setType] = useState('');
 	const [estado, setEstado] = useState('');
+	const [validated, setValidated] = useState(false);
 
 	const handleEmail = (e) => {
 		setEmail(e.target.value);
@@ -31,25 +32,33 @@ function Register(props) {
 	}
 
 	const handleSubmit = (e) => {
-		e.preventDefault();
-		axios.post('http://localhost:8080/auth/register', {
-			email: email,
-			pass: pass,
-			name: name,
-			type: type
-		}, {
-			headers: {
-				"auth-token": localStorage.getItem("token"),
-			}
-		}).then((data) => {
-			setEstado('Usuario registrado');
-		}).catch((error) => {
-			setEstado('El correo ya está en uso')
-		});
+		const form = e.currentTarget;
+		if (form.checkValidity() === false){
+			e.preventDefault();
+			e.stopPropagation();
+		}
+		else{
+			e.preventDefault();
+			axios.post('http://localhost:8080/auth/register', {
+				email: email,
+				pass: pass,
+				name: name,
+				type: type
+			}, {
+				headers: {
+					"auth-token": localStorage.getItem("token"),
+				}
+			}).then((data) => {
+				setEstado('Usuario registrado');
+			}).catch((error) => {
+				setEstado('El correo ya está en uso')
+			});
+		}
+		setValidated(true);
 	}
 
 	return hasPermission ? (
-		<Form>
+		<Form noValidate validated={validated} onSubmit={handleSubmit}>
 			{estado !== '' && (
 				<Alert variant={estado === 'Usuario registrado' ? 'success' : 'danger'}>
 					{estado}
@@ -57,25 +66,26 @@ function Register(props) {
 			)}
 		<Form.Group controlId="formBasicEmail">
 			<Form.Label>Email address</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
-		    <Form.Control onChange={handleEmail} type="email" placeholder="Enter email" />
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
+			<Form.Control required onChange={handleEmail} type="email" placeholder="Enter email" />
 			</div>
 		</Form.Group>
 
 		<Form.Group>
-		    <Form.Label>Name</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
-		    <Form.Control onChange={handleName} type="text" placeholder="Enter name" />
+			<Form.Label>Name</Form.Label>
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleName} type="text" placeholder="Enter name" />
 			</div>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Account Type</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
-			<Form.Control onChange={handleType} as="select">
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
+			<Form.Control required onChange={handleType} as="select">
+				<option value=""></option>
 				<option value="Manager">Manager</option>
 				<option value="Analyst">Analyst</option>
 				<option value="Client">Client</option>
@@ -85,14 +95,14 @@ function Register(props) {
 
 		<Form.Group controlId="formBasicPassword">
 		<Form.Label>Password</Form.Label>
-		<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
-		    <Form.Control onChange={handlePass} type="password" placeholder="Password" />
+		<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
+			<Form.Control required onChange={handlePass} type="password" placeholder="Password" />
 			</div>
 		</Form.Group>
 
-		<Button onClick={handleSubmit} variant="primary" type="submit">
-		    Enviar
+		<Button variant="primary" type="submit">
+			Registrar
 		</Button>
 		</Form>
 	) : (

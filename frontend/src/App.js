@@ -1,8 +1,8 @@
+import React from 'react';
 import logo from './images/logo.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./Home.js";
-import User from "./User.js";
 import Register from "./Register.js";
 import Login from "./Login.js";
 import Projects from "./Projects.js";
@@ -27,7 +27,6 @@ function App() {
   const isLogged = useSelector((store) => store.authReducer.isLogged);
 
   return (
-      
       <div className="App">
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Navbar.Brand>

@@ -46,8 +46,8 @@ function Login(props) {
 			)}
 		<Form.Group controlId="formBasicEmail">
 			<Form.Label>Email address</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+    		<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleEmail} type="email" placeholder="Enter email" />
 			</div>
 			<Form.Text className="text-muted">
@@ -57,8 +57,8 @@ function Login(props) {
 
 		<Form.Group controlId="formBasicPassword">
 			<Form.Label>Password</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+    		<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handlePass} type="password" placeholder="Password" />
 			</div>
 		</Form.Group>

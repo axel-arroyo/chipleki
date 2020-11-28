@@ -60,7 +60,7 @@ function Requirement(props){
                 <ListGroup.Item>Proyecto creado el: {moment(createdAt).format('DD/MM/YYYY')}</ListGroup.Item>
                 <ListGroup.Item>Última actualización: {moment(updatedAt).format('DD/MM/YYYY')}</ListGroup.Item>
                 <ListGroup.Item>Estado: {finished ?
-                    <div class="state finished"></div> : <div class="state unfinished"></div>}
+                    <div className="state finished"></div> : <div className="state unfinished"></div>}
                 </ListGroup.Item>
             </ListGroup>
             {props.flag === "true" &&

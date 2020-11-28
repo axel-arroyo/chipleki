@@ -1,5 +1,5 @@
 import { useSelector, useDispatch} from 'react-redux';
-import { Col, Row, Container, Alert, Image } from "react-bootstrap";
+import { Col, Row, Container, Alert } from "react-bootstrap";
 import {Link, useParams} from 'react-router-dom';
 import axios from 'axios';
 import React, { useEffect } from 'react';
@@ -18,8 +18,7 @@ function ProjectView(props){
     const {thisId} = useParams();
     const dispatch = useDispatch();
     const requirements = useSelector((store) => store.requirementReducer.requirements);
-    console.log(requirements);  
-    
+
     useEffect(() => {
 		if (isLogged) {
 			axios.get("http://localhost:8080/requirement", { 
@@ -43,15 +42,15 @@ function ProjectView(props){
                 &nbsp;
 				<Button variant="secondary" size="sm" block>
 					Crear requerimiento
-  				</	Button>
-				  &nbsp;
+                </	Button>
+                    &nbsp;
             </Link> 
             :
             <></>
             }
 			<Row>
                 {
-                    (requirements != null && requirements.length  > 0)
+                    requirements
                     ?
                     requirements.filter(r => r.id_project == thisId).map((v) => (
 					<Col key={v.id} md={2}>

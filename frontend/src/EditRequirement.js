@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector} from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams, Redirect } from 'react-router-dom';
 import {Form, Button, Alert} from 'react-bootstrap';
 import axios from 'axios';
 import User from './User';
@@ -86,40 +86,40 @@ function EditRequirement(props) {
 			)}
 		<Form.Group>
 			<Form.Label>Name</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={name} onChange={handleName} type="text"/>
 			</div>
 		</Form.Group>
 
 		<Form.Group>
 			<Form.Label>Description</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={desc} onChange={handleDesc} type="text"/>
 			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>Estimated Time</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={estimated} onChange={handleEstimated} type="text"/>
 			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>deadline</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={deadline} onChange={handleDeadline} type="date"/>
 			</div>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Priority</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={priority} onChange={handlePriority} as="select">
 				<option value="Alta">Alta</option>
 				<option value="Media">Media</option>
@@ -130,8 +130,8 @@ function EditRequirement(props) {
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Estado</Form.Label>
-			<div class="row">
-    		<div class="col-md-4 col-md-offset-3"></div>
+			<div className="row">
+			<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control value={finished} onChange={handleFinished} as="select">
 				<option value={true}>Finalizado</option>
 				<option value={false}>No Finalizado</option>
