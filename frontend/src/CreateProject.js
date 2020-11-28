@@ -1,44 +1,56 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
-import Auth from './Auth';
+import User from './User';
+import { useHistory } from "react-router-dom";
 
 function CreateProject(props){
 
-    var accountType = Auth();
-	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const user = User();
+    const accountType = user ? user.type : undefined;
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const [deliver, setDeliver] = useState('');
-	const [idClient, setIdClient] = useState('');
-	const [idAnalyst, setIdAnalyst] = useState('');
-    const [idManager, setIdManager] = useState('');
-    const [estado, setEstado] = useState('');
+	const [client, setClient] = useState('');
+	const [analyst, setAnalyst] = useState('');
+    const [manager, setManager] = useState('');
+	const [estado, setEstado] = useState('');
+	const history = useHistory();
 
 	const handleDeliver = (e) => {
 		setDeliver(e.target.value);
 	}
 
-	const handleIdClient = (e) => {
-		setIdClient(e.target.value);
+	const handleClient = (e) => {
+		setClient(e.target.value);
 	}
 
-	const handleIdAnalyst = (e) => {
-		setIdAnalyst(e.target.value);
+	const handleAnalyst = (e) => {
+		setAnalyst(e.target.value);
 	}
 
-	const handleIdManager = (e) => {
-		setIdManager(e.target.value);
+	const handleManager = (e) => {
+		setManager(e.target.value);
+	}
+
+	const handleBack = (e) => {
+		history.push("/projects/");
+
 	}
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios.post('http://localhost:8080/project', {
 			deliver_date: deliver,
-			id_client: idClient,
-			id_analyst: idAnalyst,
-            id_manager: idManager
+			client_email: client,
+			analyst_email: analyst,
+            manager_email: manager
+		}, {
+			headers: {
+				"auth-token": localStorage.getItem("token"),
+			}
 		}).then((data) => {
 			setEstado('Proyecto creado');
-			console.log(data);
+			history.push("/projects");
 		}).catch((error) => {
 			setEstado('Error creando el proyecto');
 		});
@@ -53,27 +65,44 @@ function CreateProject(props){
 			)}
 		<Form.Group>
 			<Form.Label>Deliver date</Form.Label>
-		    <Form.Control onChange={handleDeliver} type="date"/>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleDeliver} type="date"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group>
-		    <Form.Label>ID Manager</Form.Label>
-		    <Form.Control onChange={handleIdManager} type="text"/>
+			<Form.Label>Manager Email</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleManager} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
-		    <Form.Label>ID Analyst</Form.Label>
-		    <Form.Control onChange={handleIdAnalyst} type="text"/>
+			<Form.Label>Analyst Email</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleAnalyst} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
-		    <Form.Label>ID Client</Form.Label>
-		    <Form.Control onChange={handleIdClient} type="text"/>
+			<Form.Label>Client Email</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleClient} type="text"/>
+			</div>
 		</Form.Group>
 
-		<Button onClick={handleSubmit} variant="primary" type="submit">
-		    Enviar
+		<Button onClick={handleSubmit} variant="primary mr-3" type="submit">
+			Enviar
 		</Button>
+
+		<Button onClick={handleBack} variant="danger " type="submit">
+			Cancelar
+		</Button>
+
 		</Form>
 	) : (
 		<Alert variant="danger">Acceso Restringido</Alert>

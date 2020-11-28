@@ -1,34 +1,32 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Form, Button, Alert} from 'react-bootstrap';
-import Auth from './Auth';
-import { useParams } from 'react-router-dom';
+import {Form, Button, Alert, Row, Col} from 'react-bootstrap';
+import User from './User';
+import { useHistory, useParams} from 'react-router-dom';
+
 
 function CreateRequirement(props){
 
-    var accountType = Auth();
-	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const user = User();
+    const accountType = user ? user.type : undefined;
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
 
 	const {idProject} = useParams();
+	const history = useHistory();
 
 	const [name, setName] = useState('');
 	const [desc, setDesc] = useState('');
 	const [estimated, setEstimated] = useState('');
 	const [deadline, setDeadline] = useState('');
-	const [idAnalyst, setIdAnalyst] = useState('');
 	const [priority, setPriority] = useState('Alta');
     const [estado, setEstado] = useState('');
-
+	
 	const handleName = (e) => {
 		setName(e.target.value);
 	}
 
 	const handleDesc = (e) => {
 		setDesc(e.target.value);
-	}
-
-	const handleIdAnalyst = (e) => {
-		setIdAnalyst(e.target.value);
 	}
 
 	const handleEstimated = (e) => {
@@ -42,21 +40,28 @@ function CreateRequirement(props){
 	const handlePriority = (e) => {
 		setPriority(e.target.value);
 	}
+	
+	const handleBack = (e) => {
+		history.push("/projects/"+idProject);
 
+	}
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		axios.post('http://localhost:8080/project/requirement', {
+		axios.post('http://localhost:8080/requirement', {
 			name: name,
 			description: desc,
 			finished: false,
 			estimated_time: estimated,
 			deadline: deadline,
 			id_project: parseInt(idProject),
-			id_analyst: idAnalyst,
 			priority: priority
+		}, {
+			headers: {
+				"auth-token": localStorage.getItem("token"),
+			}
 		}).then((data) => {
 			setEstado('Requerimiento creado');
-			console.log(data);
+			history.push("/projects/"+idProject);
 		}).catch((error) => {
 			setEstado('Error creando el requerimiento');
 		});
@@ -71,41 +76,55 @@ function CreateRequirement(props){
 			)}
 		<Form.Group>
 			<Form.Label>Name</Form.Label>
-		    <Form.Control onChange={handleName} type="text"/>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleName} type="text"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group>
-		    <Form.Label>Description</Form.Label>
-		    <Form.Control onChange={handleDesc} type="text"/>
+			<Form.Label>Description</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleDesc} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
-		    <Form.Label>Estimated Time</Form.Label>
-		    <Form.Control onChange={handleEstimated} type="text"/>
+			<Form.Label>Estimated Time</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleEstimated} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
-		    <Form.Label>deadline</Form.Label>
-		    <Form.Control onChange={handleDeadline} type="date"/>
-		</Form.Group>
-
-		<Form.Group>
-		    <Form.Label>Id Analyst</Form.Label>
-		    <Form.Control onChange={handleIdAnalyst} type="number"/>
+			<Form.Label>deadline</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
+			<Form.Control onChange={handleDeadline} type="date"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Priority</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handlePriority} as="select">
 				<option value="Alta">Alta</option>
 				<option value="Media">Media</option>
 				<option value="Baja">Baja</option>
 			</Form.Control>
+			</div>
 		</Form.Group>
-
-		<Button onClick={handleSubmit} variant="primary" type="submit">
-		    Enviar
+		<Button onClick={handleSubmit} variant="primary mr-3" type="submit">
+			Enviar
 		</Button>
+
+		<Button onClick={handleBack} variant="danger" type="submit">
+			Cancelar
+		</Button>
+
 		</Form>
 	) : (
 		<Alert variant="danger">Acceso Restringido</Alert>

@@ -1,4 +1,4 @@
-import logo from './logo.png';
+import logo from './images/logo.png';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from "./Register.js";
@@ -7,6 +7,7 @@ import Projects from "./Projects.js";
 import CreateProject from "./CreateProject.js";
 import ProjectView from "./ProjectView.js";
 import CreateRequirement from "./CreateRequirement.js";
+import EditRequirement from "./EditRequirement.js";
 
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from './redux/actions/authActions.js';
@@ -20,6 +21,7 @@ function App() {
   const handleLogout = (e) => {
 		dispatch(logout());
   }
+
 
   const isLogged = useSelector((store) => store.authReducer.isLogged);
 
@@ -44,17 +46,17 @@ function App() {
           </Nav>
         {isLogged ? 
           <Nav>
-          <Nav.Link as={Link} to="/register">Register</Nav.Link>
-          <Nav.Link as={Link} onClick={handleLogout} to="/home">Logout</Nav.Link> 
+            <Nav.Link as={Link} to="/register">Register</Nav.Link>
+            <Nav.Link as={Link} onClick={handleLogout} to="/home">Logout</Nav.Link> 
           </Nav>
-        : 
+          : 
           <Nav>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
-            </Nav>}
+          </Nav>}
           
       </Navbar.Collapse>    
     </Navbar>
-        
+
         <Switch>
           <Route exact path="/projects">
             <Projects />
@@ -62,8 +64,11 @@ function App() {
           <Route exact path="/projects/:thisId">
             <ProjectView />
           </Route>
-          <Route path="/projects/:idProject/newRequirement">
+          <Route exact path="/projects/:idProject/newRequirement">
             <CreateRequirement />
+          </Route>
+          <Route exact path="/projects/:Project/:Requirement">
+            <EditRequirement />
           </Route>
           <Route path="/login">
             <Login />

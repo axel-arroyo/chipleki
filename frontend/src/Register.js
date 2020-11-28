@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import {Form, Button, Alert} from 'react-bootstrap';
-import Auth from './Auth';
+import User from './User';
 
 function Register(props) {
 
-	var accountType = Auth();
-	var hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const user = User();
+	const accountType = user ? user.type : undefined;
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
 	const [name, setName] = useState('');
@@ -36,6 +37,10 @@ function Register(props) {
 			pass: pass,
 			name: name,
 			type: type
+		}, {
+			headers: {
+				"auth-token": localStorage.getItem("token"),
+			}
 		}).then((data) => {
 			setEstado('Usuario registrado');
 		}).catch((error) => {
@@ -52,26 +57,38 @@ function Register(props) {
 			)}
 		<Form.Group controlId="formBasicEmail">
 			<Form.Label>Email address</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 		    <Form.Control onChange={handleEmail} type="email" placeholder="Enter email" />
+			</div>
 		</Form.Group>
 
 		<Form.Group>
 		    <Form.Label>Name</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 		    <Form.Control onChange={handleName} type="text" placeholder="Enter name" />
+			</div>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Account Type</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleType} as="select">
 				<option value="Manager">Manager</option>
 				<option value="Analyst">Analyst</option>
 				<option value="Client">Client</option>
 			</Form.Control>
+			</div>
 		</Form.Group>
 
 		<Form.Group controlId="formBasicPassword">
 		<Form.Label>Password</Form.Label>
+		<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 		    <Form.Control onChange={handlePass} type="password" placeholder="Password" />
+			</div>
 		</Form.Group>
 
 		<Button onClick={handleSubmit} variant="primary" type="submit">

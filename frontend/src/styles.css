@@ -3,7 +3,30 @@
   width: 100;
 }
 
+.trash {
+  height: 30px;
+  width: 30px;
+  transform: translate(400%, -30%);
+}
+
 .newProject {
   color: black;
   font-size: large;
+}
+
+.state {
+  float: right;
+  transform: translate(-300%, -10%);
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.unfinished {
+  background: #ae163e;
+}
+
+.finished {
+  background: #1e8b03;
 }

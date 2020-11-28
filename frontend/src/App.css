@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.form-control {
+  width: 30% !important;
+  align-self: center;
+  align-content: center;
+  justify-content: center;
+  justify-self: center;
+  color: #282c34;
+}
