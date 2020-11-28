@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react';
 import "./styles.css";
 import axios from 'axios';
-import plus from './images/plus.png';
 import Project from './Project.js';
 import { useSelector, useDispatch } from 'react-redux';
 import { Col, Row, Container, Alert, Image } from "react-bootstrap";
 import { fetchProjects } from './redux/actions/projectActions';
 import {Link} from 'react-router-dom';
 import User from './User';
+import Button from 'react-bootstrap/Button'
 
 function Projects(props){
 
@@ -40,10 +40,11 @@ function Projects(props){
         <Container fluid>
 			{canCreate ? 
             <Link to="/newProject">
-                <div className="newProject">
-                    Crear Proyecto
-                </div>
-                <Image src={plus} className="newIcon"/>
+                &nbsp;
+				<Button variant="secondary" size="sm" block>
+					Crear proyecto
+  				</	Button>
+				  &nbsp;
 			</Link> 
 			:
 			<></>
@@ -52,7 +53,7 @@ function Projects(props){
 				{
 				projects !== undefined ?
 				projects.filter(p => p.manager_email === user.email || p.analyst_email === user.email || p.client_email === user.email).map((v) => (
-					<Col key={v.id} md={2}>
+					<Col key={v.id} md={3}>
 						<Project id={v.id} flag="true" />
 					</Col>
 				)):

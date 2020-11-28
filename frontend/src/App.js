@@ -1,5 +1,4 @@
 import logo from './images/logo.png';
-
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from "./Home.js";
@@ -51,7 +50,7 @@ function App() {
             <Nav.Link as={Link} to="/register">Register</Nav.Link>
             <Nav.Link as={Link} onClick={handleLogout} to="/home">Logout</Nav.Link> 
           </Nav>
-          :
+          : 
           <Nav>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
           </Nav>}

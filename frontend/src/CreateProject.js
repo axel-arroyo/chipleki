@@ -9,7 +9,6 @@ function CreateProject(props){
 	const user = User();
     const accountType = user ? user.type : undefined;
 	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
-	
 	const [deliver, setDeliver] = useState('');
 	const [client, setClient] = useState('');
 	const [analyst, setAnalyst] = useState('');
@@ -31,6 +30,10 @@ function CreateProject(props){
 
 	const handleManager = (e) => {
 		setManager(e.target.value);
+	}
+
+	const handleBack = (e) => {
+		history.push("/projects/");
 	}
 
 	const handleSubmit = (e) => {
@@ -61,27 +64,44 @@ function CreateProject(props){
 			)}
 		<Form.Group>
 			<Form.Label>Deliver date</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleDeliver} type="date"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group>
 			<Form.Label>Manager Email</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleManager} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>Analyst Email</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleAnalyst} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>Client Email</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleClient} type="text"/>
+			</div>
 		</Form.Group>
 
-		<Button onClick={handleSubmit} variant="primary" type="submit">
+		<Button onClick={handleSubmit} variant="primary mr-3" type="submit">
 			Enviar
 		</Button>
+
+		<Button onClick={handleBack} variant="danger " type="submit">
+			Cancelar
+		</Button>
+
 		</Form>
 	) : (
 		<Alert variant="danger">Acceso Restringido</Alert>

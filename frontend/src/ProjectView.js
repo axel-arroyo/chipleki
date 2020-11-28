@@ -1,12 +1,12 @@
 import { useSelector, useDispatch} from 'react-redux';
 import { Col, Row, Container, Alert, Image } from "react-bootstrap";
 import {Link, useParams} from 'react-router-dom';
-import plus from './images/plus.png';
 import axios from 'axios';
 import React, { useEffect } from 'react';
 import { fetchRequirements} from './redux/actions/requirementActions';
 import Requirement from "./Requirement.js";
 import User from './User';
+import Button from 'react-bootstrap/Button'
 
 function ProjectView(props){
 
@@ -40,10 +40,11 @@ function ProjectView(props){
         <Container fluid>
             {canCreate ? 
             <Link to={"/projects/"+thisId+"/newRequirement"}>
-                <div className="newProject">
-                    Crear Requerimiento
-                </div>
-                <Image src={plus} className="newIcon"/>
+                &nbsp;
+				<Button variant="secondary" size="sm" block>
+					Crear requerimiento
+  				</	Button>
+				  &nbsp;
             </Link> 
             :
             <></>

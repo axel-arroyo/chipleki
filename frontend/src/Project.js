@@ -8,7 +8,7 @@ function Project(props){
     const {id,deliver_date,client_email,analyst_email,manager_email,createdAt,updatedAt} = useSelector((s) => s.projectReducer.projects.find(p => p.id === props.id));
 
     return (
-        <Card style={{ width: '18rem' }}>
+        <Card border = "dark" style={{ width: '18rem' }}>
         <Card.Body>
             <Card.Title>{id}</Card.Title>
             <ListGroup variant="flush">

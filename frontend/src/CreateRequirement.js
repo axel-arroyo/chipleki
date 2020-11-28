@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import {Form, Button, Alert} from 'react-bootstrap';
+import {Form, Button, Alert, Row, Col} from 'react-bootstrap';
 import User from './User';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory, useParams} from 'react-router-dom';
+
 
 function CreateRequirement(props){
 
@@ -19,7 +20,7 @@ function CreateRequirement(props){
 	const [deadline, setDeadline] = useState('');
 	const [priority, setPriority] = useState('Alta');
     const [estado, setEstado] = useState('');
-
+	
 	const handleName = (e) => {
 		setName(e.target.value);
 	}
@@ -39,7 +40,11 @@ function CreateRequirement(props){
 	const handlePriority = (e) => {
 		setPriority(e.target.value);
 	}
+	
+	const handleBack = (e) => {
+		history.push("/projects/"+idProject);
 
+	}
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		axios.post('http://localhost:8080/requirement', {
@@ -71,36 +76,55 @@ function CreateRequirement(props){
 			)}
 		<Form.Group>
 			<Form.Label>Name</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleName} type="text"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group>
 			<Form.Label>Description</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleDesc} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>Estimated Time</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleEstimated} type="text"/>
+			</div>
 		</Form.Group>
 
         <Form.Group>
 			<Form.Label>deadline</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handleDeadline} type="date"/>
+			</div>
 		</Form.Group>
 
 		<Form.Group controlId="exampleForm.ControlSelect1">
 			<Form.Label>Priority</Form.Label>
+			<div class="row">
+    		<div class="col-md-4 col-md-offset-3"></div>
 			<Form.Control onChange={handlePriority} as="select">
 				<option value="Alta">Alta</option>
 				<option value="Media">Media</option>
 				<option value="Baja">Baja</option>
 			</Form.Control>
+			</div>
 		</Form.Group>
-
-		<Button onClick={handleSubmit} variant="primary" type="submit">
+		<Button onClick={handleSubmit} variant="primary mr-3" type="submit">
 			Enviar
 		</Button>
+
+		<Button onClick={handleBack} variant="danger" type="submit">
+			Cancelar
+		</Button>
+
 		</Form>
 	) : (
 		<Alert variant="danger">Acceso Restringido</Alert>
