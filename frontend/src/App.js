@@ -1,6 +1,9 @@
 import logo from './images/logo.png';
+
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Home from "./Home.js";
+import User from "./User.js";
 import Register from "./Register.js";
 import Login from "./Login.js";
 import Projects from "./Projects.js";
@@ -48,14 +51,14 @@ function App() {
             <Nav.Link as={Link} to="/register">Register</Nav.Link>
             <Nav.Link as={Link} onClick={handleLogout} to="/home">Logout</Nav.Link> 
           </Nav>
-          : 
+          :
           <Nav>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
           </Nav>}
           
       </Navbar.Collapse>    
     </Navbar>
-        
+
         <Switch>
           <Route exact path="/projects">
             <Projects />
@@ -77,6 +80,9 @@ function App() {
           </Route>
           <Route path="/newProject">
             <CreateProject />
+          </Route>
+          <Route path="/">
+            <Home />
           </Route>
         </Switch>
       </div>

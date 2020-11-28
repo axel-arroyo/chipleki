@@ -30,3 +30,19 @@
 .finished {
   background: #1e8b03;
 }
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.animated {
+  max-width: 50%;
+  height: auto;
+  vertical-align: middle;
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
