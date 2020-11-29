@@ -1,4 +1,4 @@
-Proyecto Análisis y Diseño de Software 2020-2 grupo Chipleki Chipleki ®
+Proyecto Análisis y Diseño de Software 2020-2 grupo Chipleki Chipleki ®  
 Disponible en Github: https://github.com/axel-arroyo/chipleki
 
 # Dependencias
