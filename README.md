@@ -15,7 +15,7 @@ npm i react-bootstrap bootstrap axios @reduxjs/toolkit react-redux react-router-
 * ~~Vista de Requerimientos (Con redux supongo, similar a vista de proyectos)~~
 * ~~Editar requerimientos (tanto en redux como en la base de datos)~~
   + No se actualizan en redux, pero se vuelven a obtener al entrar a la vista, entonces no importa (?)
-* Analista pueda registrar solamente clientes, no cualquier usuario
+* ~~Analista pueda registrar solamente clientes, no cualquier usuario~~
 * Cliente pueda ingresar comentarios al proyecto
 * Al crear un proyecto autoasignar Manager o Analyst, según corresponda
 * ~~En el backend agregar autentificación por token (Lo implementan al final del video de login backend), quizás con las restricciones del frontend no es necesario, esto para despúes.~~
