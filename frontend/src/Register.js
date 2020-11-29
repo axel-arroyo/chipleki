@@ -7,7 +7,7 @@ function Register(props) {
 
 	const user = User();
 	const accountType = user ? user.type : undefined;
-	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false
+	const hasPermission = accountType === 'Manager' || accountType === 'Analyst' ? true : false;
 	const [email, setEmail] = useState('');
 	const [pass, setPass] = useState('');
 	const [name, setName] = useState(null);
@@ -86,9 +86,15 @@ function Register(props) {
 			<div className="col-md-4 col-md-offset-3"></div>
 			<Form.Control required onChange={handleType} as="select">
 				<option value=""></option>
-				<option value="Manager">Manager</option>
-				<option value="Analyst">Analyst</option>
+				{accountType === "Manager" ? 
+				<>
+					<option value="Manager">Manager</option>
+					<option value="Analyst">Analyst</option>
+					<option value="Client">Client</option>
+				</>
+				: 
 				<option value="Client">Client</option>
+				}
 			</Form.Control>
 			</div>
 		</Form.Group>

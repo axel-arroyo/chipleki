@@ -63,7 +63,7 @@ function Requirement(props){
                     <div className="state finished"></div> : <div className="state unfinished"></div>}
                 </ListGroup.Item>
             </ListGroup>
-            {props.flag === "true" &&
+            {props.flag &&
                 <Button as={Link} to={"/projects/"+id_project+"/"+id} variant="primary">Editar</Button>
             }
         </Card.Body>

@@ -20,7 +20,7 @@ function Project(props){
                 <ListGroup.Item>Última actualización: {moment(updatedAt).format('DD/MM/YYYY')}</ListGroup.Item>
             </ListGroup>
             {props.flag === "true" &&
-                <Button as={Link} to={"/projects/"+id} variant="primary">Editar</Button>
+                <Button as={Link} to={"/projects/"+id} variant="primary">Ver</Button>
             }
         </Card.Body>
         </Card>

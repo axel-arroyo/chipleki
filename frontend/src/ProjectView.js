@@ -54,7 +54,7 @@ function ProjectView(props){
                     ?
                     requirements.filter(r => r.id_project == thisId).map((v) => (
 					<Col key={v.id} md={2}>
-						<Requirement id={v.id} flag="true" />
+						<Requirement id={v.id} flag={canCreate} />
 					</Col>
                 ))
                 :
