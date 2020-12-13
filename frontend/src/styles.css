@@ -225,6 +225,7 @@
           Variations
 *******************************/
 
+<<<<<<< HEAD
 /*--------------------
         Threaded
 ---------------------*/
@@ -235,6 +236,8 @@
   -webkit-box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
   box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
 }
+=======
+>>>>>>> c9fbb33a484e1c4d202e63ff1ce17c27c79b8684
 
 /*--------------------
         Minimal
@@ -296,4 +299,16 @@
 .commentBox {
   width: 100px;
   height: 200px;
+}
+
+.photo {
+  height: 20px;
+  width: 25px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 30px;
+  height: 50px;
+  border-radius: 50%;
 }
