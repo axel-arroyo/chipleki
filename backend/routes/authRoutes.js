@@ -4,6 +4,16 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const verifySign = require("./verifyToken");
 
+//Obtener usuarios
+router.get("/", verifySign, async (req,res) =>{
+    try {
+        const users = await User.findAll({attributes: ['email','type']});
+        return res.send(users);
+    } catch (error) {
+        return res.status(400).send(error);
+    }
+});
+
 router.post("/register", verifySign, async (req, res) => {
     try {
         const userType = req.body.type;
