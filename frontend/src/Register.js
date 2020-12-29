@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Form, Button, Alert } from "react-bootstrap";
 import User from "./User";
-
 function Register(props) {
   const user = User();
   const accountType = user ? user.type : undefined;
@@ -14,6 +13,7 @@ function Register(props) {
   const [type, setType] = useState("");
   const [estado, setEstado] = useState("");
   const [validated, setValidated] = useState(false);
+
 
   const handleEmail = (e) => {
     setEmail(e.target.value);
@@ -64,73 +64,44 @@ function Register(props) {
   };
 
   return hasPermission ? (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-      {estado !== "" && (
-        <Alert variant={estado === "Usuario registrado" ? "success" : "danger"}>
+    <div id="login-box">        
+  <div class="left">
+    <h1>Registro</h1>
+    <form noValidate validated={validated} onSubmit={handleSubmit}>
+    {estado !== "" && (
+        <Alert variant={estado === "Usuario registrado" ? "success" : "danger"} >
           {estado}
         </Alert>
       )}
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control
-            required
-            onChange={handleEmail}
-            type="email"
-            placeholder="Enter email"
-          />
-        </div>
-      </Form.Group>
+    <div class="form-group">
+    <input type="text" name="email" onChange={handleEmail} placeholder="Enter email" required></input>
+    </div>
+    <div class="form-group">
+    <input type="text" name="name" onChange={handleName} placeholder="Enter name" required></input>
+    </div>
+    <div class="form-group"></div>
+    <input type="text" onChange={handleType} list="types" placeholder="Select user type" />
+  <datalist id="types">
+    <select name="{NameOfYourField}">
+        <option>Manager</option>
+        <option>Analyst</option>
+        <option>Client</option>
+        ...
+    </select>
+</datalist>
 
-      <Form.Group>
-        <Form.Label>Name</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control
-            onChange={handleName}
-            type="text"
-            placeholder="Enter name"
-          />
-        </div>
-      </Form.Group>
+    <div class="form-group">
+    <input type="password" name="pass" onChange={handlePass} placeholder="Enter password" required></input>
+    </div>
+    
+    <input type="submit" name="signup_submit" value="Registrar" />
+    </form>
+  </div>
+  
+  
+  <div class="right"></div>
+  </div>
 
-      <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Account Type</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control required onChange={handleType} as="select">
-            <option value=""></option>
-            {accountType === "Manager" ? (
-              <>
-                <option value="Manager">Manager</option>
-                <option value="Analyst">Analyst</option>
-                <option value="Client">Client</option>
-              </>
-            ) : (
-              <option value="Client">Client</option>
-            )}
-          </Form.Control>
-        </div>
-      </Form.Group>
-
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control
-            required
-            onChange={handlePass}
-            type="password"
-            placeholder="Password"
-          />
-        </div>
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Registrar
-      </Button>
-    </Form>
   ) : (
     <Alert variant="danger">Acceso Restringido</Alert>
   );

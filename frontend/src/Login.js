@@ -21,6 +21,7 @@ function Login(props) {
   };
 
   const handleSubmit = (e) => {
+    
     e.preventDefault();
     axios
       .post("http://localhost:8080/auth/login", {
@@ -28,6 +29,7 @@ function Login(props) {
         pass: pass,
       })
       .then((response) => {
+        console.log("Hola");
         dispatch(login());
         setEstado("OK");
         localStorage.setItem("token", response.headers["auth-token"]);
@@ -39,41 +41,30 @@ function Login(props) {
   };
 
   return (
-    <Form>
+  <div id="login-box">        
+  <div class="left">
+    <h1>Login</h1>
+    <form onSubmit={handleSubmit}>
       {estado !== "" && (
         <Alert variant={estado === "OK" ? "success" : "danger"}>{estado}</Alert>
       )}
-      <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control
-            onChange={handleEmail}
-            type="email"
-            placeholder="Enter email"
-          />
-        </div>
-        <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
-        </Form.Text>
-      </Form.Group>
+      <div class="form-group">
+    <input type="text" name="email" onChange={handleEmail} placeholder="Enter email" required></input>
+    </div>
+    <div class="form-group">
+    <input type="password" name="pass" onChange={handlePass} placeholder="Enter password" required></input>
+    </div>
+    <div class="form-group"></div>
+    <input type="submit" name="login_submit" value="Ingresar" />
+    </form>
+  </div>
 
-      <Form.Group controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control
-            onChange={handlePass}
-            type="password"
-            placeholder="Password"
-          />
-        </div>
-      </Form.Group>
+  <div class="right">
+  <span class="loginwith"></span>
+  </div>
+    </div>
 
-      <Button onClick={handleSubmit} variant="primary" type="submit">
-        Enviar
-      </Button>
-    </Form>
+    
   );
 }
 

@@ -7,17 +7,19 @@ import User from "./User.js";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
-
 function CommentSection(props) {
-  const tx = document.getElementsByTagName('textarea');
+  const tx = document.getElementsByTagName("textarea");
   for (let i = 0; i < tx.length; i++) {
-  tx[i].setAttribute('style', 'height:' + (tx[i].scrollHeight) + 'px;overflow-y:hidden;');
-  tx[i].addEventListener("input", OnInput, false);
+    tx[i].setAttribute(
+      "style",
+      "height:" + tx[i].scrollHeight + "px;overflow-y:hidden;"
+    );
+    tx[i].addEventListener("input", OnInput, false);
   }
 
   function OnInput() {
-    this.style.height = 'auto';
-    this.style.height = (this.scrollHeight) + 'px';
+    this.style.height = "auto";
+    this.style.height = this.scrollHeight + "px";
   }
   const user = User();
   const [comments, setComments] = useState([]);
@@ -75,45 +77,41 @@ function CommentSection(props) {
   };
 
   return (
-    <div className="card mt-5 mb-3">
-    <Card bg={'Light'.toLocaleLowerCase()}>
-    <Card.Header>Comentarios</Card.Header>
-    <Card.Body>
-    <Card.Text>
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
-            <Form.Control
-              onChange={handleComment}
-              as="textarea"
-              type="text"
-              placeholder="Agregar un comentario"
-              rows="3"
-              cols="50"
-              required
-              
-            />
-            <Button variant="primary" type="submit">
-              Comentar
-            </Button>
-          </Form>
-        <div> 
-        <br></br>
-        <Row>
-        <Comment.Group>
-          {comments
-            .filter((c) => c.project == props.project)
-            .reverse()
-            .map((c) => (
-              <Comments
-                comment={c}
-                reply={comments.filter((v) => v.replyOf === c.id)}
-              />
-            ))}
-        </Comment.Group>
-      </Row>
-      </div>
-      </Card.Text>
-      </Card.Body>
-      </Card>
+    <div class="ui comments">
+      
+  <h3 class="ui dividing header">Comentarios</h3>
+  <div class="submitType">
+      
+<span class="write-new">
+
+<form  onSubmit={handleSubmit}  >
+
+    <textarea  type="text" placeholder="Unirse a la conversación" name="comment" required onChange={handleComment}></textarea>
+
+    
+        <button  type="submit" >Submit</button>
+    
+
+</form>
+
+</span>
+            <div>
+              <br></br>
+              <Row>
+                <Comment.Group>
+                  {comments
+                    .filter((c) => c.project == props.project)
+                    .reverse()
+                    .map((c) => (
+                      <Comments
+                        comment={c}
+                        reply={comments.filter((v) => v.replyOf === c.id)}
+                      />
+                    ))}
+                </Comment.Group>
+              </Row>
+            </div>
+            </div>
     </div>
   );
 }
