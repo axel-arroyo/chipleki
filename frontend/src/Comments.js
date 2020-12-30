@@ -90,7 +90,6 @@ function Comments(props) {
               </a>
               </div>
                   <Collapse in={open}>
-
                       <Form
                         noValidate
                         validated={validated}
