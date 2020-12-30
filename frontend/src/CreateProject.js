@@ -92,25 +92,26 @@ function CreateProject(props) {
   };
 
   return hasPermission ? (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <form id="msform" onSubmit={handleSubmit}  >
       {estado !== "" && (
         <Alert variant={estado === "Proyecto creado" ? "success" : "danger"}>
           {estado}
         </Alert>
       )}
-      <Form.Group>
-        <Form.Label>Deliver date</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control onChange={handleDeliver} type="date" required />
-        </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Manager</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control required onChange={handleManager} as="select">
+      <ul id="progressbar">
+    <li>Login</li>
+    <li class="active">Proyectos</li>
+    <li >Requerimientos</li>
+  </ul>
+  <fieldset>
+    <h2 class="fs-title">Creación de proyectos</h2>
+    <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
+    <input type="date" name="date" onChange={handleDeliver} placeholder="Enter estimated deliver date"required>
+    </input>
+    <div class="form-group" float="center">
+    <input type="text" name="manager_sb" onChange={handleManager} placeholder="Select Manager" list="managers" required as="select"></input>
+    <datalist id="managers">
+    <select name="managers">
             <option value=""></option>
             {users ? (
               users
@@ -123,15 +124,13 @@ function CreateProject(props) {
             ) : (
               <></>
             )}
-          </Form.Control>
+            </select>
+            </datalist>
         </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Analyst</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control required onChange={handleAnalyst} as="select">
+        <div class="form-group" float="center">
+    <input type="text" name="analyst_sb" onChange={handleAnalyst} placeholder="Select Analyst" list="analysts"required as="select"></input>
+    <datalist id="analysts">
+    <select name="analysts">
             <option value=""></option>
             {users ? (
               users
@@ -144,15 +143,13 @@ function CreateProject(props) {
             ) : (
               <></>
             )}
-          </Form.Control>
+            </select>
+            </datalist>
         </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Client</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control required onChange={handleClient} as="select">
+        <div class="form-group" float="center">
+    <input type="text" name="client_sb" onChange={handleClient} placeholder="Select Client" list="clients" required as="select"></input>
+    <datalist id="clients">
+    <select name="clients">
             <option value=""></option>
             {users ? (
               users
@@ -165,18 +162,15 @@ function CreateProject(props) {
             ) : (
               <></>
             )}
-          </Form.Control>
+            </select>
+            </datalist>
         </div>
-      </Form.Group>
-
-      <Button variant="primary mr-3" type="submit">
-        Enviar
-      </Button>
-
-      <Button onClick={handleBack} variant="danger " type="back">
+      <button class="next action-button" onclick="thanks()">Submit</button>
+      <button onClick={handleBack} type="back" className="next action-button-2">
         Cancelar
-      </Button>
-    </Form>
+      </button>
+      </fieldset>
+    </form>
   ) : (
     <Alert variant="danger">Acceso Restringido</Alert>
   );
