@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Card, Button, ListGroup, Image, Modal } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
@@ -10,6 +11,7 @@ import User from "./User";
 
 function Requirement(props) {
   moment.locale("es");
+  const [developers, setDevelopers] = useState([]);
   const user = User();
   const accountType = user ? user.type : undefined;
   const canDelete =
@@ -26,6 +28,21 @@ function Requirement(props) {
     handleClose();
   };
 
+  useEffect(() => {
+    axios
+      .get("http://localhost:8080/developer", {
+        headers: {
+          "auth-token": localStorage.getItem("token"),
+        },
+      })
+      .then((response) => {
+        setDevelopers(response.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const {
     id,
     name,
@@ -34,6 +51,7 @@ function Requirement(props) {
     estimated_time,
     deadline,
     id_project,
+    id_developer,
     priority,
     createdAt,
     updatedAt,
@@ -71,6 +89,16 @@ function Requirement(props) {
           <ListGroup.Item>Descripción: {description}</ListGroup.Item>
           <ListGroup.Item>Prioridad: {priority}</ListGroup.Item>
           <ListGroup.Item>
+            Desarrollador:&nbsp;
+            {id_developer && developers.length > 0 ? (
+              developers.find((d) => d.id === id_developer).name
+            ) : (
+              <Link to={"/projects/" + id_project + "/" + id + "/assign"}>
+                Asignar
+              </Link>
+            )}
+          </ListGroup.Item>
+          <ListGroup.Item>
             Proyecto creado el: {moment(createdAt).format("DD/MM/YYYY")}
           </ListGroup.Item>
           <ListGroup.Item>
@@ -89,7 +117,7 @@ function Requirement(props) {
           <Button
             as={Link}
             to={"/projects/" + id_project + "/" + id}
-            variant="primary"
+            variant="primary mr-3"
           >
             Editar
           </Button>

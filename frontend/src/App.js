@@ -10,11 +10,14 @@ import CreateProject from "./CreateProject.js";
 import ProjectView from "./ProjectView.js";
 import CreateRequirement from "./CreateRequirement.js";
 import EditRequirement from "./EditRequirement.js";
+import Assign from "./Assign.js";
+import User from "./User.js";
+import DeveloperView from "./DeveloperView.js";
 
 import { useSelector, useDispatch } from "react-redux";
 import { logout } from "./redux/actions/authActions.js";
 import { Navbar, Nav } from "react-bootstrap";
-import { Switch, Route, Link } from "react-router-dom";
+import { Switch, Route, Link, Redirect } from "react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -24,6 +27,8 @@ function App() {
   };
 
   const isLogged = useSelector((store) => store.authReducer.isLogged);
+  const user = User();
+  const userType = user ? user.type : undefined;
 
   return (
     <div className="App">
@@ -78,6 +83,12 @@ function App() {
         </Route>
         <Route exact path="/projects/:Project/:Requirement">
           <EditRequirement />
+        </Route>
+        <Route exact path="/projects/:Project/:Requirement/assign">
+          <Assign />
+        </Route>
+        <Route exact path="/dev">
+          <DeveloperView />
         </Route>
         <Route path="/login">
           <Login />

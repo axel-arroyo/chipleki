@@ -5,6 +5,7 @@ import Project from "./Project.js";
 import { useSelector, useDispatch } from "react-redux";
 import { Col, Row, Container, Alert, Image } from "react-bootstrap";
 import { fetchProjects } from "./redux/actions/projectActions";
+import { fetchUsers } from "./redux/actions/userActions.js";
 import { Link } from "react-router-dom";
 import User from "./User";
 import Button from "react-bootstrap/Button";

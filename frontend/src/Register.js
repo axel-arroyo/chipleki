@@ -105,6 +105,7 @@ function Register(props) {
               <>
                 <option value="Manager">Manager</option>
                 <option value="Analyst">Analyst</option>
+                <option value="Developer">Developer</option>
                 <option value="Client">Client</option>
               </>
             ) : (

@@ -28,9 +28,9 @@ function Login(props) {
         pass: pass,
       })
       .then((response) => {
+        localStorage.setItem("token", response.headers["auth-token"]);
         dispatch(login());
         setEstado("OK");
-        localStorage.setItem("token", response.headers["auth-token"]);
         history.push("/home");
       })
       .catch((error) => {
