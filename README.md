@@ -9,7 +9,7 @@ npm i -D nodemon sequelize-cli
 ## Frontend
 npx create-react-app frontend --use-npm      (frontend es el nombre de la carpeta a crear, pongan lo que quieran)
 
-npm i react-bootstrap bootstrap axios jwt-decode @reduxjs/toolkit react-redux react-router-dom moment semantic-ui-react
+npm i react-bootstrap bootstrap axios jwt-decode @reduxjs/toolkit react-redux react-router-dom moment semantic-ui-react react-table react-meta-tags
 
 # Por Implementar
 * ~~Agregar Requerimientos al proyecto (Historia de Usuario)~~
