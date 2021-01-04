@@ -17,8 +17,9 @@ function EditRequirement(props) {
     (store) => store.requirementReducer.requirements
   );
   const requirement = requirements.find((req) => req.id == Requirement);
-
+  
   const [name, setName] = useState(requirement.name);
+  console.log(name);
   const [desc, setDesc] = useState(requirement.description);
   const [estimated, setEstimated] = useState(requirement.estimated_time);
   const [deadline, setDeadline] = useState(requirement.deadline);
@@ -85,7 +86,7 @@ function EditRequirement(props) {
   };
 
   return hasPermission ? (
-    <Form>
+<form id="msform" onSubmit={handleSubmit}  >
       {estado !== "" && (
         <Alert
           variant={
@@ -95,77 +96,42 @@ function EditRequirement(props) {
           {estado}
         </Alert>
       )}
-      <Form.Group>
-        <Form.Label>Name</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control value={name} onChange={handleName} type="text" />
-        </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control value={desc} onChange={handleDesc} type="text" />
-        </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Estimated Time</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control
-            value={estimated}
-            onChange={handleEstimated}
-            type="text"
-          />
-        </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>deadline</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control
-            value={deadline}
-            onChange={handleDeadline}
-            type="date"
-          />
-        </div>
-      </Form.Group>
-
-      <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Priority</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control value={priority} onChange={handlePriority} as="select">
-            <option value="Alta">Alta</option>
-            <option value="Media">Media</option>
-            <option value="Baja">Baja</option>
-          </Form.Control>
-        </div>
-      </Form.Group>
-
-      <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Estado</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control value={finished} onChange={handleFinished} as="select">
-            <option value={true}>Finalizado</option>
-            <option value={false}>No Finalizado</option>
-          </Form.Control>
-        </div>
-      </Form.Group>
-
-      <Button onClick={handleSubmit} variant="primary mr-3" type="submit">
-        Enviar
-      </Button>
-
-      <Button onClick={handleBack} variant="danger" type="submit">
+      <ul id="progressbar">
+    <li>Login</li>
+    <li>Proyectos</li>
+    <li class="active">Requerimientos</li>
+  </ul>
+  <fieldset>
+    <h2 class="fs-title">Edición de requerimiento</h2>
+    <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
+    <input type="text" name="name" onChange={handleName} value={name} required></input>
+    <input type="description" name="desc" onChange={handleDesc} value={desc} required></input>
+    <input type="text" name="time" onChange={handleEstimated} value={estimated} required></input>
+    <input type="date" name="deadline" onChange={handleDeadline} value={deadline} required></input>
+    <input type="text" onChange={handlePriority} list="priorities" value={priority} />
+    <datalist id="priorities">
+    <select name="{NameOfYourField}">
+      <option value="Alta">Alta</option>
+      <option value="Media">Media</option>
+      <option value="Baja">Baja</option>
+        ...
+    </select>
+    </datalist>
+    <input type="text" onChange={handleFinished} list="finished" value={finished} />
+    <datalist id="finished">
+    <select name="{NameOfYourField}">
+      <option value={true}>Finalizado</option>
+      <option value={false}>No Finalizado</option>
+        ...
+    </select>
+    </datalist>
+    <button class="next action-button" onclick="thanks()">Submit</button>
+    <button onClick={handleBack} type="back" className="next action-button-2">
         Cancelar
-      </Button>
-    </Form>
+      </button>
+  </fieldset>
+  
+</form>
   ) : (
     <Alert variant="danger">Acceso Restringido</Alert>
   );

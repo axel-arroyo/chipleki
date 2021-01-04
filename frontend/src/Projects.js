@@ -9,6 +9,8 @@ import { fetchUsers } from "./redux/actions/userActions.js";
 import { Link } from "react-router-dom";
 import User from "./User";
 import Button from "react-bootstrap/Button";
+import Avatars from '@dicebear/avatars';
+import sprites from '@dicebear/avatars-identicon-sprites';
 
 function Projects(props) {
   const isLogged = useSelector((store) => store.authReducer.isLogged);
@@ -41,11 +43,10 @@ function Projects(props) {
     <Container fluid>
       {canCreate ? (
         <Link to="/newProject">
-          &nbsp;
-          <Button variant="secondary" size="sm" block>
-            Crear proyecto
-          </Button>
-          &nbsp;
+              <button class="icon-btn add-btn">
+                <div class="add-icon"></div>
+                  <div class="btn-txt">Agregar proyecto</div>
+              </button>
         </Link>
       ) : (
         <></>
@@ -60,8 +61,39 @@ function Projects(props) {
                 p.client_email === user.email
             )
             .map((v) => (
+              
               <Col key={v.id} md={3}>
-                <Project id={v.id} flag="true" />
+                
+                <div class="card-container">
+	<span class="pro">No Finalizado</span>
+	<img class="round" src={
+                  "https://avatars.dicebear.com/api/bottts/" +
+                              v.client_email +
+                              ".svg"
+                } alt="user" />
+	<h3><b>{"Proyecto #" + v.id}</b></h3>
+	<p>{"Analista: " + v.analyst_email}</p>
+	<p>{"Manager: " + v.manager_email}</p>
+  <p>{"Cliente:  " + v.client_email}</p>
+	<div class="buttons">
+		<Button class="primary" as={Link} to={"/projects/" + v.id}>
+			Ver
+		</Button>
+
+	</div>
+	<div class="skills">
+		<h6><b>Requerimientos</b></h6>
+		<ul>
+			<li>UI / UX</li>
+			<li>Front End Development</li>
+			<li>HTML</li>
+			<li>CSS</li>
+			<li>JavaScript</li>
+			<li>React</li>
+			<li>Node</li>
+		</ul>
+	</div>
+</div>
               </Col>
             ))
         ) : (

@@ -81,7 +81,8 @@ function CreateRequirement(props) {
   };
 
   return hasPermission ? (
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <form id="msform" onSubmit={handleSubmit}  >
+
       {estado !== "" && (
         <Alert
           variant={estado === "Requerimiento creado" ? "success" : "danger"}
@@ -89,57 +90,34 @@ function CreateRequirement(props) {
           {estado}
         </Alert>
       )}
-      <Form.Group>
-        <Form.Label>Name</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control required onChange={handleName} type="text" />
-        </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Description</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control required onChange={handleDesc} type="text" />
-        </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>Estimated Time</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control onChange={handleEstimated} type="text" />
-        </div>
-      </Form.Group>
-
-      <Form.Group>
-        <Form.Label>deadline</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control onChange={handleDeadline} type="date" />
-        </div>
-      </Form.Group>
-
-      <Form.Group controlId="exampleForm.ControlSelect1">
-        <Form.Label>Priority</Form.Label>
-        <div className="row">
-          <div className="col-md-4 col-md-offset-3"></div>
-          <Form.Control onChange={handlePriority} as="select">
-            <option value="Alta">Alta</option>
-            <option value="Media">Media</option>
-            <option value="Baja">Baja</option>
-          </Form.Control>
-        </div>
-      </Form.Group>
-      <Button variant="primary mr-3" type="submit">
-        Enviar
-      </Button>
-
-      <Button onClick={handleBack} variant="danger" type="submit">
+      <ul id="progressbar">
+    <li>Login</li>
+    <li>Proyectos</li>
+    <li class="active">Requerimientos</li>
+  </ul>
+  <fieldset>
+    <h2 class="fs-title">Creación de requerimientos</h2>
+    <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
+    <input type="text" name="name" onChange={handleName} placeholder="Enter name" required></input>
+    <input type="description" name="desc" onChange={handleDesc} placeholder="Enter description" required></input>
+    <input type="text" name="time" onChange={handleEstimated} placeholder="Enter estimated time" required></input>
+    <input type="date" name="deadline" onChange={handleDeadline} required></input>
+    <input type="text" onChange={handlePriority} list="priorities" placeholder="Enter priority" />
+    <datalist id="priorities">
+    <select name="{NameOfYourField}">
+      <option value="Alta">Alta</option>
+      <option value="Media">Media</option>
+      <option value="Baja">Baja</option>
+        ...
+    </select>
+    </datalist>
+    <button class="next action-button" onclick="thanks()">Submit</button>
+    <button onClick={handleBack} type="back" className="next action-button-2">
         Cancelar
-      </Button>
-    </Form>
+      </button>
+  </fieldset>
+  
+</form>
   ) : (
     <Alert variant="danger">Acceso Restringido</Alert>
   );

@@ -41,11 +41,10 @@ function ProjectView(props) {
     <Container fluid>
       {canCreate ? (
         <Link to={"/projects/" + thisId + "/newRequirement"}>
-          &nbsp;
-          <Button variant="secondary" size="sm" block>
-            Crear requerimiento
-          </Button>
-          &nbsp;
+         <button class="icon-btn add-btn">
+                <div class="add-icon"></div>
+                  <div class="btn-txt">Agregar requerimiento</div>
+              </button>
         </Link>
       ) : (
         <></>

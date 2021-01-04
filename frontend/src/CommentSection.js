@@ -77,25 +77,24 @@ function CommentSection(props) {
   };
 
   return (
-    <div className="card mt-5 mb-3">
-      <Card bg={"Light".toLocaleLowerCase()}>
-        <Card.Header>Comentarios</Card.Header>
-        <Card.Body>
-          <Card.Text>
-            <Form noValidate validated={validated} onSubmit={handleSubmit}>
-              <Form.Control
-                onChange={handleComment}
-                as="textarea"
-                type="text"
-                placeholder="Agregar un comentario"
-                rows="3"
-                cols="50"
-                required
-              />
-              <Button variant="primary" type="submit">
-                Comentar
-              </Button>
-            </Form>
+    <div class="ui comments">
+      
+  <h3 class="ui dividing header">Comentarios</h3>
+  <div class="submitType">
+      
+<span class="write-new">
+
+<form  onSubmit={handleSubmit}  >
+
+    <textarea  type="text" placeholder="Unirse a la conversación" name="comment" required onChange={handleComment}></textarea>
+
+    
+        <button  type="submit" >Submit</button>
+    
+
+</form>
+
+</span>
             <div>
               <br></br>
               <Row>
@@ -112,9 +111,7 @@ function CommentSection(props) {
                 </Comment.Group>
               </Row>
             </div>
-          </Card.Text>
-        </Card.Body>
-      </Card>
+            </div>
     </div>
   );
 }

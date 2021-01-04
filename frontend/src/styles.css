@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .newIcon {
   height: 100px;
   width: 100;
@@ -340,3 +341,1143 @@
 #myTable tr:hover {
   background-color: #f1f1f1;
 }
+=======
+.newIcon {
+  height: 100px;
+  width: 100;
+}
+
+.trash {
+  height: 30px;
+  width: 30px;
+  transform: translate(400%, -30%);
+}
+
+.newProject {
+  color: black;
+  font-size: large;
+}
+
+.state {
+  float: right;
+  transform: translate(-300%, -10%);
+  width: 20px;
+  height: 20px;
+  margin: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.unfinished {
+  background: #ae163e;
+}
+
+.finished {
+  background: #1e8b03;
+}
+
+@keyframes up-down {
+  0% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
+.animated {
+  max-width: 50%;
+  height: auto;
+  vertical-align: middle;
+  animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+.ui.comments {
+  margin: 1.5em 0em;
+  max-width: 650px;
+}
+.ui.comments:first-child {
+  margin-top: 0em;
+}
+.ui.comments:last-child {
+  margin-bottom: 0em;
+}
+
+/*--------------
+    Comment
+---------------*/
+
+.ui.comments .comment {
+  position: relative;
+  background: none;
+  margin: 0.5em 0em 0em;
+  padding: 0.5em 0em 0em;
+  border: none;
+  border-top: none;
+  line-height: 1.2;
+}
+.ui.comments .comment:first-child {
+  margin-top: 0em;
+  padding-top: 0em;
+}
+
+/*--------------------
+    Nested Comments
+---------------------*/
+
+.ui.comments .comment .comments {
+  margin: 0em 0em 0.5em 0.5em;
+  padding: 1em 0em 1em 1em;
+}
+.ui.comments .comment .comments:before {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+.ui.comments .comment .comments .comment {
+  border: none;
+  border-top: none;
+  background: none;
+}
+
+/*--------------
+    Avatar
+---------------*/
+
+.ui.comments .comment .avatar {
+  display: block;
+  width: 3em;
+  height: auto;
+  float: left;
+  margin: 0.2em 0em 0em;
+  
+}
+.ui.comments .comment img.avatar,
+.ui.comments .comment .avatar img {
+  display: block;
+  margin: 0em auto;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.25rem;
+}
+
+/*--------------
+    Content
+---------------*/
+
+.ui.comments .comment > .content {
+  display: block;
+}
+
+/* If there is an avatar move content over */
+.ui.comments .comment > .avatar ~ .content {
+  margin-left: 3.5em;
+}
+
+/*--------------
+    Author
+---------------*/
+
+.ui.comments .comment .author {
+  font-size: 1em;
+  color: rgba(0, 0, 0, 0.87);
+  font-weight: bold;
+}
+.ui.comments .comment a.author {
+  cursor: pointer;
+}
+.ui.comments .comment a.author:hover {
+  color: #1e70bf;
+}
+
+/*--------------
+    Metadata
+---------------*/
+
+.ui.comments .comment .metadata {
+  display: inline-block;
+  margin-left: 0.5em;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.875em;
+}
+.ui.comments .comment .metadata > * {
+  display: inline-block;
+  margin: 0em 0.5em 0em 0em;
+}
+.ui.comments .comment .metadata > :last-child {
+  margin-right: 0em;
+}
+
+/*--------------------
+    Comment b
+---------------------*/
+
+.ui.comments .comment .text {
+  margin: 0.25em 0em 0.5em;
+  font-size: 1em;
+  word-wrap: break-word;
+  color: rgba(0, 0, 0, 0.87);
+  line-height: 1.3;
+}
+
+/*--------------------
+    User Actions
+---------------------*/
+
+.ui.comments .comment .actions {
+  font-size: 0.875em;
+}
+.ui.comments .comment .actions a {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0em 0.75em 0em 0em;
+  color: rgba(0, 0, 0, 0.4);
+}
+.ui.comments .comment .actions a:last-child {
+  margin-right: 0em;
+}
+.ui.comments .comment .actions a.active,
+.ui.comments .comment .actions a:hover {
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/*--------------------
+      Reply Form
+---------------------*/
+
+.ui.comments > .reply.form {
+  margin-top: 1em;
+}
+.ui.comments .comment .reply.form {
+  width: 100%;
+  margin-top: 1em;
+}
+.ui.comments .reply.form textarea {
+  font-size: 1em;
+  height: 12em;
+}
+
+/*******************************
+            State
+*******************************/
+
+.ui.collapsed.comments,
+.ui.comments .collapsed.comments,
+.ui.comments .collapsed.comment {
+  display: none;
+}
+
+/*******************************
+          Variations
+*******************************/
+
+/*--------------------
+        Threaded
+---------------------*/
+
+.ui.threaded.comments .comment .comments {
+  margin: -1.5em 0 -1em 1.25em;
+  padding: 3em 0em 2em 2.25em;
+  -webkit-box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
+  box-shadow: -1px 0px 0px rgba(34, 36, 38, 0.15);
+}
+/*--------------------
+        Minimal
+---------------------*/
+
+.ui.minimal.comments .comment .actions {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: auto;
+  -webkit-transition: opacity 0.2s ease;
+  transition: opacity 0.2s ease;
+  -webkit-transition-delay: 0.1s;
+  transition-delay: 0.1s;
+}
+.ui.minimal.comments .comment > .content:hover > .actions {
+  opacity: 1;
+}
+
+/*-------------------
+        Sizes
+--------------------*/
+
+.ui.mini.comments {
+  font-size: 0.78571429rem;
+}
+.ui.tiny.comments {
+  font-size: 0.85714286rem;
+}
+.ui.small.comments {
+  font-size: 0.92857143rem;
+}
+.ui.comments {
+  font-size: 1rem;
+}
+.ui.large.comments {
+  font-size: 1.14285714rem;
+}
+.ui.big.comments {
+  font-size: 1.28571429rem;
+}
+.ui.huge.comments {
+  font-size: 1.42857143rem;
+}
+.ui.massive.comments {
+  font-size: 1.71428571rem;
+}
+
+/*-------------------
+      Header
+--------------------*/
+
+.ui.dividing.header {
+  padding-bottom: 0.21428571rem;
+  border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
+
+.commentBox {
+  width: 100px;
+  height: 200px;
+}
+
+.photo {
+  height: 20px;
+  width: 25px;
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 30px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  
+  font-size: 16px;
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+#login-box {
+  position: relative;
+  margin: 5% auto;
+  width: 600px;
+  height: 400px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+}
+
+h1 {
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+input[type="text"],
+input[type="password"] {
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  width: 220px;
+  height: 32px;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #16a085;
+  color: #16a085;
+  transition: 0.2s ease;
+}
+
+input[type="submit"] {
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: #16a085;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+input[type="submit"]:active {
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.or {
+  position: absolute;
+  top: 180px;
+  left: 280px;
+  width: 40px;
+  height: 40px;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+}
+
+.right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 300px;
+  height: 400px;
+  background: url('https://cdn.statically.io/img/www.fonewalls.com/wp-content/uploads/1668x2224-Background-HD-Wallpaper-009-300x400.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+}
+
+.right .loginwith {
+  display: block;
+  margin-bottom: 40px;
+  font-size: 35px;
+  color: #FFF;
+  text-align: center;
+}
+
+button.social-signin {
+  margin-bottom: 20px;
+  width: 220px;
+  height: 36px;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin.a {
+  background: #32508E;
+}
+
+#title-Tag-Line {
+  font-size: 20px;
+}
+/* .card-item__bg{
+  width: 150px;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+  display: block;
+  position: relative;
+  margin: 30px auto;
+  transform: translate(0px, 50px);
+  z-index: 5;
+} */
+
+
+
+/*----------------
+ Edit Coment CSS
+-------------------*/
+
+/*custom font*/
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+/*basic reset*/
+* {margin: 0; padding: 0;}
+
+html {
+	height: 100%;
+	/*Image only BG fallback*/
+	
+	/*background = gradient + image pattern combo*/
+
+}
+
+body {
+	font-family: montserrat, arial, verdana;
+}
+/*form styles*/
+#msform {
+	width: 400px;
+	margin: 50px auto;
+	text-align: center;
+	position: relative;
+}
+#msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 20px 30px;
+	box-sizing: border-box;
+	width: 80%;
+	margin: 0 10%;
+	
+	/*stacking fieldsets above each other*/
+	position: relative;
+}
+/*Hide all except first fieldset*/
+#msform fieldset:not(:first-of-type) {
+	display: none;
+}
+/*inputs*/
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 100%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+/*buttons*/
+#msform .action-button {
+	width: 100px;
+	background: #27AE60;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button-2 {
+	width: 100px;
+	background: red;
+	font-weight: bold;
+	color: white;
+	border: 0 none;
+	border-radius: 1px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+/*headings*/
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
+/*progressbar*/
+#progressbar {
+	margin-bottom: 30px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+#progressbar li {
+	list-style-type: none;
+  
+	text-transform: uppercase;
+	font-size: 9px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+#progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 10px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+#progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background: black;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+#progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps green*/
+/*The number of the step and the connector before it = green*/
+#progressbar li.active:before{
+	background: #27AE60;
+	color: white;
+}
+
+
+
+/*
+---------------------
+Comment Section
+--------------------
+*/
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.comment-section{
+  list-style: none;
+  max-width: 800px;
+  width: 120%;
+  margin: 50px auto;
+  padding: 10px;
+}
+
+.comment{
+  display: flex;
+  border-radius: 3px;
+  margin-bottom: 45px;
+  flex-wrap: wrap;
+}
+
+.comment.user-comment{
+  color:  #808080;
+}
+
+.comment.author-comment{
+  color:  #60686d;
+  justify-content: flex-end;
+}
+
+/* User and time info */
+
+.comment .info{
+  width: 17%;
+}
+
+.comment.user-comment .info{
+  text-align: right;
+}
+
+.comment.author-comment .info{
+  order: 3;
+}
+
+
+.comment .info a{	/* User name */
+  display: block;
+  text-decoration: none;
+  color: #656c71;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 10px 0 3px 0;
+}
+
+.comment .info span{	/* Time */
+  font-size: 11px;
+  color:  #9ca7af;
+}
+
+
+/* The user avatar */
+
+.comment .avatar{
+  width: 8%;
+}
+
+.comment.user-comment .avatar{
+  padding: 10px 18px 0 3px;
+}
+
+.comment.author-comment .avatar{
+  order: 2;
+  padding: 10px 3px 0 18px;
+}
+
+.comment .avatar img{
+  display: block;
+  border-radius: 50%;
+}
+
+.comment.user-comment .avatar img{
+  float: right;
+}
+
+
+
+
+
+/* The comment text */
+
+.tab {
+  margin-left: 6em
+ }
+
+ .tab2 {
+  margin-right: 3em
+ }
+ 
+ .tab3 {
+   margin-right: 1.5em;
+ }
+
+.comment p{
+  line-height: 1.5;
+  padding: 18px 22px;
+  width: 300px;
+  position: relative;
+  word-wrap: break-word;
+}
+
+.comment.user-comment p{
+  background-color:  #f3f3f3;
+}
+
+.comment.author-comment p{
+  background-color:  #e2f8ff;
+  order: 1;
+}
+
+.user-comment p:after{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #f3f3f3;
+  left: -8px;
+  top: 18px;
+}
+
+.author-comment p:after{
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  border: 2px solid #e2f8ff;
+  right: -8px;
+  top: 18px;
+}
+
+
+
+
+/* Comment form */
+
+.write-new{
+  margin: 80px auto 0;
+  width: 50%;
+}
+
+.write-new textarea{
+  color:  #444;
+  font: inherit;
+  outline: 0;
+  border-radius: 3px;
+  border: 1px solid #cecece;
+  background-color:  #fefefe;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.06);
+  overflow: auto;
+  width:100%;
+  margin: 5px 0;
+  min-height: 80px;
+  padding: 15px 20px;
+}
+
+.write-new img{
+  border-radius: 50%;
+  margin-top: 15px;
+}
+
+.write-new button{
+  float:right;
+  background-color:  #87bae1;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  border: 0;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+
+  padding: 10px 25px;
+  margin-top: 18px;
+}
+
+
+
+/* Responsive styles */
+
+@media (max-width: 800px){
+  /* Make the paragraph in the comments take up the whole width,
+  forcing the avatar and user info to wrap to the next line*/
+  .comment p{
+      width: 100%;
+  }
+
+  /* Reverse the order of elements in the user comments,
+  so that the avatar and info appear after the text. */
+  .comment.user-comment .info{
+      order: 3;
+      text-align: left;
+  }
+
+  .comment.user-comment .avatar{
+      order: 2;
+  }
+
+  .comment.user-comment p{
+      order: 1;
+  }
+
+
+  /* Align toward the beginning of the container (to the left)
+  all the elements inside the author comments. */
+  .comment.author-comment{
+      justify-content: flex-start;
+  }
+
+
+  .comment-section{
+      margin-top: 10px;
+  }
+
+  .comment .info{
+      width: auto;
+  }
+
+  .comment .info a{
+      padding-top: 15px;
+  }
+
+  .comment.user-comment .avatar,
+  .comment.author-comment .avatar{
+      padding: 15px 10px 0 18px;
+      width: auto;
+  }
+
+  .comment.user-comment p:after,
+  .comment.author-comment p:after{
+      width: 12px;
+      height: 12px;
+      top: initial;
+      left: 28px;
+      bottom: -6px;
+  }
+
+  .write-new{
+      width: 100%;
+  }
+}
+
+.submitType{
+  margin-bottom: 2em;
+  margin-top: 2em;
+}
+
+.replyType{
+  margin-top: 0.2em;
+  margin-left: 20em;
+  margin-bottom: 3em;
+  
+}
+.bottomSpace{
+  margin-bottom: 2em;
+  margin-left: 20em;
+}
+
+.anchorButton{
+    background: none;
+    border:none; 
+    padding:0;
+    border-bottom:1px;
+
+}
+
+.areaNewWrite textarea{
+  color:  #444;
+  font: inherit;
+  outline: 0;
+  border-radius: 3px;
+  border: 1px solid #cecece;
+  background-color:  #fefefe;
+  box-shadow: 1px 2px 1px 0 rgba(0, 0, 0, 0.06);
+  overflow: auto;
+  width:100%;
+  margin: 5px 0;
+  min-height: 80px;
+  padding: 15px 20px;
+  margin-left: 4em;
+  
+ 
+}
+
+/* 
+
+ADD BUTTON
+
+*/
+
+
+.icon-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #cdcdcd;
+  background: white;
+  border-radius: 25px;
+  overflow: hidden;
+  position: relative;
+  transition: width 0.2s ease-in-out;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  
+  
+}
+.add-btn:hover {
+  width: 140px;
+}
+
+/*
+Linea horizontal del boton
+*/
+.add-btn::before,
+.add-btn::after {
+  transition: width 0.2s ease-in-out, border-radius 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 10px;
+  top: calc(50% - 2px);
+  background: black;
+}
+.add-btn::after {
+  right: 14px;
+  overflow: hidden;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.add-btn::before {
+  left: 14px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.icon-btn:focus {
+  outline: none;
+}
+.btn-txt {
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.add-btn:hover::before,
+.add-btn:hover::after {
+  width: 4px;
+  border-radius: 2px;
+}
+.add-btn:hover .btn-txt {
+  opacity: 1;
+}
+/*
+Linea vertical del boton
+*/
+.add-icon::after,
+.add-icon::before {
+  transition: all 0.2s ease-in-out;
+  content: "";
+  position: absolute;
+  height: 20px;
+  width: 2px;
+  top: calc(50% - 10px);
+  background: black;
+  overflow: hidden;
+}
+.add-icon::before {
+  left: 22px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+.add-icon::after {
+  right: 22px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+.add-btn:hover .add-icon::before {
+  left: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+.add-btn:hover .add-icon::after {
+  right: 15px;
+  height: 4px;
+  top: calc(50% - 2px);
+}
+
+
+
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+* {
+	box-sizing: border-box;
+}
+
+h3 {
+	margin: 10px 0;
+}
+
+h6 {
+	margin: 5px 0;
+	text-transform: uppercase;
+}
+
+p {
+	font-size: 14px;
+	line-height: 21px;
+}
+
+.card-container {
+	background-color: #231E39;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #B3B8CD;
+	padding-top: 30px;
+	position: relative;
+	width: 350px;
+	max-width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.card-container .pro {
+	color: #231E39;
+	background-color: #FEBB0B;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 3px 7px;
+	position: absolute;
+	top: 30px;
+	left: 5px;
+}
+
+.card-container .delete{
+  color: #231E39;
+	background-color: #FEBB0B;
+	border-radius: 3px;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 3px 7px;
+	position: absolute;
+	top: 30px;
+	left: 5px;
+}
+.card-container .round {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+  padding: 1px;
+  height: 4em;
+}
+
+button.primary {
+	background-color: #03BFCB;
+	border: 1px solid #03BFCB;
+	border-radius: 3px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+	font-weight: 500;
+	padding: 10px 25px;
+}
+
+button.primary.ghost {
+	background-color: transparent;
+	color: #02899C;
+}
+
+.skills {
+	background-color: #1F1A36;
+	text-align: left;
+	padding: 15px;
+	margin-top: 30px;
+}
+
+.skills ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.skills ul li {
+	border: 1px solid #2D2747;
+	border-radius: 2px;
+	display: inline-block;
+	font-size: 12px;
+	margin: 0 7px 7px 0;
+	padding: 7px;
+}
+>>>>>>> eadae52ace111b1a5798b500fe9666fa24076b7b

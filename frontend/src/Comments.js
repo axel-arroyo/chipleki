@@ -1,11 +1,12 @@
 import { useState } from "react";
 import moment from "moment";
-import { Button, Form, Collapse, Card } from "react-bootstrap";
+import { Button, Form, Collapse, Card} from "react-bootstrap";
 import { Comment } from "semantic-ui-react";
 import axios from "axios";
 import User from "./User.js";
 import reply from "./images/respuesta.png";
 import { Image } from "react-bootstrap";
+import MetaTags from 'react-meta-tags';
 function Comments(props) {
   const user = User();
   const hasReply = props.reply !== undefined && props.reply.length > 0;
@@ -48,58 +49,53 @@ function Comments(props) {
   };
 
   return (
-    <div className="card mt-2 mb-3">
-      <Card
-        bg={"Light".toLocaleLowerCase()}
-        border="dark"
-        style={{ width: "80rem" }}
-      >
-        <Card.Header>
-          {" "}
-          {props.comment.creator}
-          <div style={{ float: "left" }}> {"#" + props.comment.id}</div>
-          <div style={{ float: "right" }}>
-            <Comment.Metadata>
-              <div>{moment(props.comment.updatedAt).fromNow()}</div>
-            </Comment.Metadata>
-          </div>
-        </Card.Header>
-        <Card.Body>
-          <Card.Text>
-            <Comment>
-              <Comment.Avatar
-                src={
+   <div>
+    <MetaTags>
+    <meta charset="utf-8"></meta>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<meta name="keywords" content="chat, user, comments, wide" />
+    </MetaTags>
+
+<link rel="stylesheet" href="styles.css"></link>
+
+
+
+<ul class="comment-section">
+
+  <li class="comment user-comment">
+
+            <div class="info" >
+                <a href="#">{props.comment.creator}</a>
+                <span>4 hours ago  </span>
+                
+            </div>
+            <a class="avatar" href="#">
+            <img src={
                   "https://avatars.dicebear.com/api/bottts/" +
                   props.comment.creator +
                   ".svg"
-                }
-              />
-              <Comment.Content>
-                <div style={{ float: "left" }}>
-                  <Comment.Text>{props.comment.comment}</Comment.Text>
-                </div>
-                <Comment.Actions>
-                  <div className="mt-1 mb-3" style={{ float: "right" }}>
-                    <Comment.Action
-                      as={Button}
-                      onClick={() => setOpen(!open)}
-                      aria-controls="example-collapse-text"
+                } width="25" alt="Profile Avatar" title="Jack Smith" />
+            </a>
+            
+            <p>{props.comment.comment}</p>
+            <div class="tab">
+            <Comment.Actions>
+              <div class="replyType">
+              <a onClick= {() => setOpen(!open)} aria-controls="example-collapse-text"
                       aria-expanded={open}
                       variant="secondary"
-                    >
-                      Reply
-                    </Comment.Action>
-                  </div>
-                  <br></br>
-                  <br></br>
-                  <br></br>
+                      > Responder
+
+              </a>
+              </div>
                   <Collapse in={open}>
-                    <div style={{ float: "none" }}>
                       <Form
                         noValidate
                         validated={validated}
                         onSubmit={handleSubmit}
                       >
+                        <span class="areaNewWrite">
                         <Form.Control
                           onChange={handleComment}
                           as="textarea"
@@ -108,63 +104,51 @@ function Comments(props) {
                           rows="3"
                           required
                         />
-                        <Button variant="primary" type="submit">
+                        </span>
+                        <div class="bottomSpace">
+                        <button class="anchorButton" type="submit">
                           Comentar
-                        </Button>
-                      </Form>
-                    </div>
-                  </Collapse>
-                </Comment.Actions>
-              </Comment.Content>
-
-              {hasReply ? (
-                props.reply.map((r) => (
-                  <div className="card mt-2 mb-3">
-                    <Card bg={"Light".toLocaleLowerCase()} border="dark">
-                      <Card.Header>
-                        <Image
-                          src={reply}
-                          className="reply"
-                          alt=""
-                          className="photo"
-                        />
-                        {props.comment.creator}
-                        <div style={{ float: "right" }}>
-                          <Comment.Metadata>
-                            <div>
-                              {moment(props.comment.updatedAt).fromNow()}
-                            </div>
-                          </Comment.Metadata>
+                        </button>
                         </div>
-                      </Card.Header>
+                      </Form>
 
-                      <Comment.Group>
-                        <Comment>
-                          <Comment.Avatar
-                            src={
-                              "https://avatars.dicebear.com/api/bottts/" +
+                  </Collapse>
+                    </Comment.Actions>
+                    </div>
+                    </li>
+                    {hasReply ? (
+                props.reply.map((r) => (
+                  <div class="tab3">
+                  <li class="comment author-comment">
+                        <div class="info" >
+                <a href="#">{props.comment.creator}</a>
+                <span>3 hours ago</span>
+                <img src={
+                  "https://avatars.dicebear.com/api/bottts/" +
                               r.creator +
                               ".svg"
-                            }
-                          />
-                          <Comment.Content>
-                            <div style={{ float: "left" }}>
-                              <Comment.Text>{r.comment}</Comment.Text>
-                            </div>
-                          </Comment.Content>
-                        </Comment>
-                      </Comment.Group>
-                    </Card>
+                } width="25" alt="Profile Avatar" title="Jack Smith" />
+            </div>
+            <div class="tab2">
+            <p>{r.comment}</p>
+            </div>
+                  </li>
                   </div>
                 ))
               ) : (
                 <></>
               )}
-            </Comment>
-          </Card.Text>
-        </Card.Body>
-      </Card>
-    </div>
+              
+            
+            
+           
+  
+    
+          
+    
+</ul>
+
+</div>
   );
 }
 export default Comments;
