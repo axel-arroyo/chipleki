@@ -28,7 +28,7 @@ function Login(props) {
         pass: pass,
       })
       .then((response) => {
-        console.log("Hola");
+        localStorage.setItem("token", response.data);
         dispatch(login());
         setEstado("OK");
         history.push("/home");
