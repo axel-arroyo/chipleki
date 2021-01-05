@@ -7,6 +7,7 @@ const {
   Developer,
   Technology,
   Quotation,
+  Project,
 } = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");

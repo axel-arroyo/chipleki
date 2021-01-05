@@ -104,6 +104,7 @@ function Register(props) {
               <option>Manager</option>
               <option>Analyst</option>
               <option>Client</option>
+              <option>Developer</option>
               ...
             </select>
           </datalist>

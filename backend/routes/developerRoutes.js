@@ -16,6 +16,25 @@ router.get("/", verifySign, async (req, resp) => {
   }
 });
 
+router.post("/devquotations", verifySign, async (req, resp) => {
+  try {
+    const dev = await Developer.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+    const id_dev = dev.id;
+    const quotations = await Quotation.findAll({
+      where: {
+        id_developer: id_dev,
+      },
+    });
+    return resp.send(quotations);
+  } catch (error) {
+    resp.status(400).send(error);
+  }
+});
+
 //Obtener developers con sus technologies y cotizaciones
 router.post("/data", verifySign, async (req, resp) => {
   try {
@@ -43,8 +62,15 @@ router.post("/data", verifySign, async (req, resp) => {
 //Agregar cotizacion
 router.post("/quotation", verifySign, async (req, resp) => {
   try {
+    console.log("A");
+    const dev = await Developer.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
+    console.log("B");
     const quotation = await Quotation.create({
-      id_developer: req.body.id_developer,
+      id_developer: dev.id,
       id_requirement: req.body.id_requirement,
       value: req.body.value,
     });
