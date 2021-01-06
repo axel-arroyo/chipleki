@@ -2,6 +2,14 @@ import { Button } from "react-bootstrap";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+const mean = (ratings) => {
+  console.log(ratings);
+  const mean = Number(
+    ratings.reduce((total, next) => total + next.rating, 0) / ratings.length
+  ).toFixed(1);
+  return isNaN(mean) ? "New Developer" : mean;
+};
+
 const handleSubmit = (id_dev) => {
   const url = document.location.pathname;
   const match = url.match(/[^/?]*[^/?]/g);
@@ -43,7 +51,7 @@ export const COLUMNS = [
   },
   {
     Header: "Rating",
-    accessor: "rating",
+    accessor: (row) => mean(row.Ratings),
   },
   {
     Header: "$",

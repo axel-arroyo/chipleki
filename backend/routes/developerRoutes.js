@@ -1,5 +1,11 @@
 const router = require("express").Router();
-const { Developer, Technology, Quotation, Requirement } = require("../models");
+const {
+  Developer,
+  Technology,
+  Quotation,
+  Requirement,
+  Rating,
+} = require("../models");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const verifySign = require("./verifyToken");
@@ -35,7 +41,7 @@ router.post("/devquotations", verifySign, async (req, resp) => {
   }
 });
 
-//Obtener developers con sus technologies y cotizaciones
+//Obtener developers con sus technologies, cotizaciones y rating
 router.post("/data", verifySign, async (req, resp) => {
   try {
     console.log(req.body);
@@ -46,6 +52,10 @@ router.post("/data", verifySign, async (req, resp) => {
       include: [
         Technology,
         {
+          model: Rating,
+          attributes: ["rating"],
+        },
+        {
           model: Quotation,
           attributes: ["value"],
           required: true,
@@ -54,6 +64,19 @@ router.post("/data", verifySign, async (req, resp) => {
       ],
     });
     return resp.send(developers);
+  } catch (error) {
+    resp.status(400).send(error);
+  }
+});
+
+//Agregar rating
+router.post("/rate", verifySign, async (req, resp) => {
+  try {
+    const rating = await Rating.create({
+      rating: req.body.rating,
+      id_developer: req.body.id_developer,
+    });
+    return resp.send(rating);
   } catch (error) {
     resp.status(400).send(error);
   }

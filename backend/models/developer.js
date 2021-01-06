@@ -18,6 +18,9 @@ module.exports = (sequelize, DataTypes) => {
       Developer.hasMany(models.Quotation, {
         foreignKey: "id_developer",
       });
+      Developer.hasMany(models.Rating, {
+        foreignKey: "id_developer",
+      });
     }
   }
   Developer.init(
