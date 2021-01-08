@@ -15,19 +15,22 @@ function Project(props) {
 
   return (
     <div class="card-container">
-	    <span class="pro">No Finalizado</span>
-	        <img class="round" src={
-            "https://avatars.dicebear.com/api/bottts/" +
-              client_email +".svg"
-          } alt="user" />
-	    <h3><b>{"Proyecto #" + id}</b></h3>
-	    <p>{"Analista: " + analyst_email}</p>
-	    <p>{"Manager: " + manager_email}</p>
+      <span class="pro">No Finalizado</span>
+      <img
+        class="round"
+        src={"https://avatars.dicebear.com/api/bottts/" + client_email + ".svg"}
+        alt="user"
+      />
+      <h3>
+        <b>{"Proyecto #" + id}</b>
+      </h3>
+      <p>{"Analista: " + analyst_email}</p>
+      <p>{"Manager: " + manager_email}</p>
       <p>{"Cliente:  " + client_email}</p>
       <p>Proyecto creado el: {moment(createdAt).format("DD/MM/YYYY")}</p>
       <Link to={"/projects/" + id}>
-	      <div class="buttons">
-		      <button class="primary">Ver</button>
+        <div class="buttons">
+          <button class="primary">Ver</button>
         </div>
       </Link>
     </div>

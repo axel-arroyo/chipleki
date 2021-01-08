@@ -30,7 +30,7 @@ function Assign(props) {
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
   const columns = useMemo(() => COLUMNS, []);
   const {

@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Col, Row, Container, Alert} from "react-bootstrap";
+import { Col, Row, Container, Alert } from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { fetchRequirements } from "./redux/actions/requirementActions";
@@ -35,16 +35,16 @@ function ProjectView(props) {
           console.log(err);
         });
     }
-  },[]);
+  }, []);
 
   return isLogged ? (
     <Container fluid>
       {canCreate ? (
         <Link to={"/projects/" + thisId + "/newRequirement"}>
-         <button class="icon-btn add-btn">
-                <div class="add-icon"></div>
-                  <div class="btn-txt">Agregar requerimiento</div>
-              </button>
+          <button class="icon-btn add-btn">
+            <div class="add-icon"></div>
+            <div class="btn-txt">Agregar requerimiento</div>
+          </button>
         </Link>
       ) : (
         <></>

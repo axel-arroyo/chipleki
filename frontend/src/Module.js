@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Form } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import moment from "moment";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -38,7 +38,7 @@ function Module(props) {
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
   const quoted = quotations.map((q) => q.id_requirement);
 
@@ -92,40 +92,40 @@ function Module(props) {
 
   return (
     <div class="card-container-module">
-	        <img class="round" src={
-          "https://avatars.dicebear.com/api/jdenticon/" + id+ ".svg"
-                } alt="user" />
-	    <h3><b>{name}</b></h3>
+      <img
+        class="round"
+        src={"https://avatars.dicebear.com/api/jdenticon/" + id + ".svg"}
+        alt="user"
+      />
+      <h3>
+        <b>{name}</b>
+      </h3>
       <p>{"Descripción  " + description}</p>
       <p>{"Prioridad:  " + priority}</p>
       <p>{"Tiempo estimado:  " + estimated_time}</p>
       <p>{"Fecha límite:  " + moment(deadline).format("DD/MM/YY")}</p>
       {showForm && (
         <div>
-        
-              <Form noValidate validated={validated} onSubmit={handleSumbit}>
-              <div class="formulario">
-                <Form.Control onChange={handleValue} type="number" required/>
-                </div>
-                <button type="submit" class="primary-module" placeholder="valor">
-                  Enviar
-                </button>
-                <button onClick={handleForm} class="danger-module">
+          <Form noValidate validated={validated} onSubmit={handleSumbit}>
+            <div class="formulario">
+              <Form.Control onChange={handleValue} type="number" required />
+            </div>
+            <button type="submit" class="primary-module" placeholder="valor">
+              Enviar
+            </button>
+            <button onClick={handleForm} class="danger-module">
               Cancelar
             </button>
-              </Form>
-     
-        
-        
+          </Form>
         </div>
-          )}
-          {showForm ? (
-            <></>
-          ) : (
-            <button onClick={handleForm} class="primary">
-              Enviar cotización
-            </button>
-          )}
+      )}
+      {showForm ? (
+        <></>
+      ) : (
+        <button onClick={handleForm} class="primary">
+          Enviar cotización
+        </button>
+      )}
     </div>
   );
 }

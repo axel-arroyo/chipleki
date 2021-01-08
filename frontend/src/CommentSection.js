@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import {Row} from "react-bootstrap";
-import {Comment} from "semantic-ui-react";
+import { Row } from "react-bootstrap";
+import { Comment } from "semantic-ui-react";
 import Comments from "./Comments.js";
 import User from "./User.js";
 import axios from "axios";
@@ -75,40 +75,38 @@ function CommentSection(props) {
 
   return (
     <div class="ui comments">
-      
-  <h3 class="ui dividing header">Comentarios</h3>
-  <div class="submitType">
-      
-<span class="write-new">
+      <h3 class="ui dividing header">Comentarios</h3>
+      <div class="submitType">
+        <span class="write-new">
+          <form onSubmit={handleSubmit}>
+            <textarea
+              type="text"
+              placeholder="Unirse a la conversación"
+              name="comment"
+              required
+              onChange={handleComment}
+            ></textarea>
 
-<form  onSubmit={handleSubmit}  >
-
-    <textarea  type="text" placeholder="Unirse a la conversación" name="comment" required onChange={handleComment}></textarea>
-
-    
-        <button  type="submit" >Submit</button>
-    
-
-</form>
-
-</span>
-            <div>
-              <br></br>
-              <Row>
-                <Comment.Group>
-                  {comments
-                    .filter((c) => c.project === parseInt(props.project))
-                    .reverse()
-                    .map((c) => (
-                      <Comments
-                        comment={c}
-                        reply={comments.filter((v) => v.replyOf === c.id)}
-                      />
-                    ))}
-                </Comment.Group>  
-              </Row>
-            </div>
-            </div>
+            <button type="submit">Submit</button>
+          </form>
+        </span>
+        <div>
+          <br></br>
+          <Row>
+            <Comment.Group>
+              {comments
+                .filter((c) => c.project === parseInt(props.project))
+                .reverse()
+                .map((c) => (
+                  <Comments
+                    comment={c}
+                    reply={comments.filter((v) => v.replyOf === c.id)}
+                  />
+                ))}
+            </Comment.Group>
+          </Row>
+        </div>
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { login } from "./redux/actions/authActions.js";
 import { useHistory } from "react-router-dom";

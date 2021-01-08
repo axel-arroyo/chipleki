@@ -3,7 +3,7 @@ import "./styles.css";
 import axios from "axios";
 import Project from "./Project.js";
 import { useSelector, useDispatch } from "react-redux";
-import { Col, Row, Container, Alert} from "react-bootstrap";
+import { Col, Row, Container, Alert } from "react-bootstrap";
 import { fetchProjects } from "./redux/actions/projectActions";
 import { Link } from "react-router-dom";
 import User from "./User";
@@ -33,16 +33,16 @@ function Projects(props) {
           console.log(err);
         });
     }
-  },[]);
+  }, []);
 
   return isLogged ? (
     <Container fluid>
       {canCreate ? (
         <Link to="/newProject">
-              <button class="icon-btn add-btn">
-                <div class="add-icon"></div>
-                  <div class="btn-txt">Agregar proyecto</div>
-              </button>
+          <button class="icon-btn add-btn">
+            <div class="add-icon"></div>
+            <div class="btn-txt">Agregar proyecto</div>
+          </button>
         </Link>
       ) : (
         <></>
@@ -57,7 +57,6 @@ function Projects(props) {
                 p.client_email === user.email
             )
             .map((v) => (
-              
               <Col key={v.id} md={3}>
                 <Project id={v.id} flag={canCreate} />
               </Col>

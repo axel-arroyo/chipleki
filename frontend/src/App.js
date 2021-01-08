@@ -30,6 +30,7 @@ function App() {
   const userType = user ? user.type : undefined;
 
   switch (userType) {
+    // De momento Manager y Analyst tienen los mismos permisos
     case "Manager":
       return (
         <div className="App">

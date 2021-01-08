@@ -34,7 +34,7 @@ function CreateProject(props) {
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
   const users = useSelector((store) => store.userReducer.users);
 
@@ -92,83 +92,118 @@ function CreateProject(props) {
   };
 
   return hasPermission ? (
-    <form id="msform" onSubmit={handleSubmit}  >
+    <form id="msform" onSubmit={handleSubmit}>
       {estado !== "" && (
         <Alert variant={estado === "Proyecto creado" ? "success" : "danger"}>
           {estado}
         </Alert>
       )}
       <ul id="progressbar">
-    <li>Login</li>
-    <li class="active">Proyectos</li>
-    <li >Requerimientos</li>
-  </ul>
-  <fieldset>
-    <h2 class="fs-title">Creación de proyectos</h2>
-    <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
-    <input type="date" name="date" onChange={handleDeliver} placeholder="Enter estimated deliver date"required>
-    </input>
-    <div class="form-group" float="center">
-    <input type="text" name="manager_sb" onChange={handleManager} placeholder="Select Manager" list="managers" required as="select"></input>
-    <datalist id="managers">
-    <select name="managers">
-            <option value=""></option>
-            {users ? (
-              users
-                .filter((u) => u.type === "Manager")
-                .map((u) => (
-                  <option key={u.email} value={u.email}>
-                    {u.email}
-                  </option>
-                ))
-            ) : (
-              <></>
-            )}
+        <li>Login</li>
+        <li class="active">Proyectos</li>
+        <li>Requerimientos</li>
+      </ul>
+      <fieldset>
+        <h2 class="fs-title">Creación de proyectos</h2>
+        <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
+        <input
+          type="date"
+          name="date"
+          onChange={handleDeliver}
+          placeholder="Enter estimated deliver date"
+          required
+        ></input>
+        <div class="form-group" float="center">
+          <input
+            type="text"
+            name="manager_sb"
+            onChange={handleManager}
+            placeholder="Select Manager"
+            list="managers"
+            required
+            as="select"
+          ></input>
+          <datalist id="managers">
+            <select name="managers">
+              <option value=""></option>
+              {users ? (
+                users
+                  .filter((u) => u.type === "Manager")
+                  .map((u) => (
+                    <option key={u.email} value={u.email}>
+                      {u.email}
+                    </option>
+                  ))
+              ) : (
+                <></>
+              )}
             </select>
-            </datalist>
+          </datalist>
         </div>
         <div class="form-group" float="center">
-    <input type="text" name="analyst_sb" onChange={handleAnalyst} placeholder="Select Analyst" list="analysts"required as="select"></input>
-    <datalist id="analysts">
-    <select name="analysts">
-            <option value=""></option>
-            {users ? (
-              users
-                .filter((u) => u.type === "Analyst")
-                .map((u) => (
-                  <option key={u.email} value={u.email}>
-                    {u.email}
-                  </option>
-                ))
-            ) : (
-              <></>
-            )}
+          <input
+            type="text"
+            name="analyst_sb"
+            onChange={handleAnalyst}
+            placeholder="Select Analyst"
+            list="analysts"
+            required
+            as="select"
+          ></input>
+          <datalist id="analysts">
+            <select name="analysts">
+              <option value=""></option>
+              {users ? (
+                users
+                  .filter((u) => u.type === "Analyst")
+                  .map((u) => (
+                    <option key={u.email} value={u.email}>
+                      {u.email}
+                    </option>
+                  ))
+              ) : (
+                <></>
+              )}
             </select>
-            </datalist>
+          </datalist>
         </div>
         <div class="form-group" float="center">
-    <input type="text" name="client_sb" onChange={handleClient} placeholder="Select Client" list="clients" required as="select"></input>
-    <datalist id="clients">
-    <select name="clients">
-            <option value=""></option>
-            {users ? (
-              users
-                .filter((u) => u.type === "Client")
-                .map((u) => (
-                  <option key={u.email} value={u.email}>
-                    {u.email}
-                  </option>
-                ))
-            ) : (
-              <></>
-            )}
+          <input
+            type="text"
+            name="client_sb"
+            onChange={handleClient}
+            placeholder="Select Client"
+            list="clients"
+            required
+            as="select"
+          ></input>
+          <datalist id="clients">
+            <select name="clients">
+              <option value=""></option>
+              {users ? (
+                users
+                  .filter((u) => u.type === "Client")
+                  .map((u) => (
+                    <option key={u.email} value={u.email}>
+                      {u.email}
+                    </option>
+                  ))
+              ) : (
+                <></>
+              )}
             </select>
-            </datalist>
+          </datalist>
         </div>
-      <button class="next action-button" onclick="thanks()">Submit</button>
-      <button onClick={handleBack} type="back" className="next action-button-2">
-        Cancelar
-      </button>
+        <button class="next action-button" onclick="thanks()">
+          Submit
+        </button>
+        <button
+          onClick={handleBack}
+          type="back"
+          className="next action-button-2"
+        >
+          Cancelar
+        </button>
       </fieldset>
     </form>
   ) : (
