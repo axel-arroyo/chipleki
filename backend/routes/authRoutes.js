@@ -25,7 +25,6 @@ router.get("/", verifySign, async (req, res) => {
 
 router.post("/register", verifySign, async (req, res) => {
   try {
-    const userType = req.body.type;
     const emailValid = await User.findOne({
       where: {
         email: req.body.email,
@@ -42,28 +41,27 @@ router.post("/register", verifySign, async (req, res) => {
       pass: hashPass,
       type: req.body.type,
     });
-    var newaccount = null;
     switch (req.body.type) {
       case "Manager":
-        newaccount = await Manager.create({
+        await Manager.create({
           name: req.body.name,
           email: req.body.email,
         });
         break;
       case "Analyst":
-        newaccount = await Analyst.create({
+        await Analyst.create({
           name: req.body.name,
           email: req.body.email,
         });
         break;
       case "Client":
-        newaccount = await Client.create({
+        await Client.create({
           name: req.body.name,
           email: req.body.email,
         });
         break;
       case "Developer":
-        newaccount = await Developer.create({
+        await Developer.create({
           name: req.body.name,
           email: req.body.email,
           working: false,

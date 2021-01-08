@@ -1,9 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
+let corsOptions = {
+  origin: "http://localhost:3000", // SonarQube security fix
+};
 const app = express();
 
-app.use(cors());
+app.disable("x-powered-by");
+app.use(cors(corsOptions));
 app.enable("trust proxy");
 app.use(express.json());
 
