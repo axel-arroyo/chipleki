@@ -72,9 +72,14 @@ router.post("/data", verifySign, async (req, resp) => {
 //Agregar rating
 router.post("/rate", verifySign, async (req, resp) => {
   try {
+    const developer = await Developer.findOne({
+      where: {
+        email: req.body.email,
+      },
+    });
     const rating = await Rating.create({
       rating: req.body.rating,
-      id_developer: req.body.id_developer,
+      id_developer: developer.id,
     });
     return resp.send(rating);
   } catch (error) {
