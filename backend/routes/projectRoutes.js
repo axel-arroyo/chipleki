@@ -32,7 +32,7 @@ router.post("/", verifySign, async (req, resp) => {
 //Crear requerimientos al proyecto de id especificada
 router.post("/requirement/", verifySign, async (req, resp) => {
   try {
-    user = req.user;
+    const user = req.user;
     if (user.type === "Manager" || user.type === "Analyst") {
       const requirement = await Requirement.create(req.body);
       return resp.send(requirement);
