@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Card, ListGroup, Button, Form } from "react-bootstrap";
+import {Form } from "react-bootstrap";
 import moment from "moment";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
@@ -11,14 +11,9 @@ function Module(props) {
     id,
     name,
     description,
-    finished,
     estimated_time,
     deadline,
-    id_project,
-    id_developer,
     priority,
-    createdAt,
-    updatedAt,
   } = useSelector((s) =>
     s.requirementReducer.requirements.find((r) => r.id === props.id)
   );
@@ -43,7 +38,7 @@ function Module(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },[]);
 
   const quoted = quotations.map((q) => q.id_requirement);
 

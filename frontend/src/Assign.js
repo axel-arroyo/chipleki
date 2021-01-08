@@ -8,7 +8,7 @@ import "./table.css";
 import { COLUMNS } from "./columns";
 
 function Assign(props) {
-  const { Project, Requirement } = useParams();
+  const Requirement = useParams();
   const [developers, setDevelopers] = useState([]);
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function Assign(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },[]);
 
   const columns = useMemo(() => COLUMNS, []);
   const {

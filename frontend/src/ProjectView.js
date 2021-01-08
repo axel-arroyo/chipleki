@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Col, Row, Container, Alert, Form, Button } from "react-bootstrap";
+import { Col, Row, Container, Alert} from "react-bootstrap";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import { fetchRequirements } from "./redux/actions/requirementActions";
@@ -35,7 +35,7 @@ function ProjectView(props) {
           console.log(err);
         });
     }
-  }, []);
+  },[]);
 
   return isLogged ? (
     <Container fluid>
@@ -52,7 +52,7 @@ function ProjectView(props) {
       <Row>
         {requirements ? (
           requirements
-            .filter((r) => r.id_project == thisId)
+            .filter((r) => r.id_project === parseInt(thisId))
             .map((v) => (
               <Col key={v.id} md={3}>
                 <Requirement id={v.id} flag={canCreate} />

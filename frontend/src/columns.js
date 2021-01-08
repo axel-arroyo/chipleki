@@ -1,6 +1,5 @@
 import { Button } from "react-bootstrap";
 import axios from "axios";
-import { Link } from "react-router-dom";
 
 const mean = (ratings) => {
   console.log(ratings);
