@@ -501,7 +501,7 @@ html {
 }
 
 body {
-  font-family: montserrat, arial, verdana;
+  font-family: montserrat, arial, verdana, serif;
 }
 /*form styles*/
 #msform {
@@ -536,7 +536,7 @@ body {
   margin-bottom: 10px;
   width: 100%;
   box-sizing: border-box;
-  font-family: montserrat;
+  font-family: montserrat, serif;
   color: #2c3e50;
   font-size: 13px;
 }
