@@ -87,7 +87,7 @@ function Module(props) {
   };
 
   if (quoted.includes(props.id)) {
-    return <></>;
+    return false;
   }
 
   return (

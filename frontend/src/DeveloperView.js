@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { useSelector, useDispatch } from "react-redux";
 
-import { Col, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import Module from "./Module.js";
 import { fetchRequirements } from "./redux/actions/requirementActions.js";
 
@@ -25,17 +25,17 @@ function DeveloperView(props) {
       .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
   return (
     <Row>
-      {requirements
-        .filter((r) => r.id_developer === null)
-        .map((req) => (
-          <Col key={req.id} md={3}>
-            <Module id={req.id} flag={false} />
-          </Col>
-        ))}
+      {requirements ? (
+        requirements
+          .filter((r) => r.id_developer === null)
+          .map((req) => <Module id={req.id} />)
+      ) : (
+        <></>
+      )}
     </Row>
   );
 }
