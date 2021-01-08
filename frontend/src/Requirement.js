@@ -61,8 +61,8 @@ function Requirement(props) {
 
   return (
     <div class="card-container">
-       {canDelete ? (
-          <>
+      {canDelete ? (
+        <>
           <div class="topRight">
             <Image src={trash} className="trash" alt="" onClick={handleShow} />
             <Modal show={show} onHide={handleClose}>
@@ -79,64 +79,67 @@ function Requirement(props) {
                 </Button>
               </Modal.Footer>
             </Modal>
-            </div>
-          </>
+          </div>
+        </>
+      ) : (
+        <></>
+      )}
+      {finished ? (
+        <span class="pro">Finalizado</span>
+      ) : (
+        <span class="pro">No Finalizado</span>
+      )}
+
+      <img
+        class="round"
+        src={"https://avatars.dicebear.com/api/jdenticon/" + id + ".svg"}
+        alt="user"
+      />
+      <h3>{name}</h3>
+      <p>{"Descripción: " + description}</p>
+      <p>
+        {estimated_time ? (
+          "Tiempo estimado: " + estimated_time
+        ) : (
+          <div class="requirement-danger">Tiempo estimado: No especificado</div>
+        )}
+      </p>
+      <p>{"Prioridad " + priority}</p>
+      <p>Requerimiento creado el: {moment(createdAt).format("DD/MM/YYYY")}</p>
+      <p>Última actualización: {moment(updatedAt).fromNow()}</p>
+      <p>
+        {deadline ? (
+          "Fecha de entrega: " + moment(deadline).fromNow()
+        ) : (
+          <div class="requirement-danger">Fecha de entrega: No establecido</div>
+        )}
+      </p>
+      <div class="buttons">
+        {id_developer && developers.length > 0 ? (
+          <img
+            class="round-2"
+            src={
+              "https://avatars.dicebear.com/api/bottts/" + id_developer + ".svg"
+            }
+            alt="user"
+          />
         ) : (
           <></>
         )}
-            {finished ? (
-              <span class="pro">Finalizado</span>
-            ) : (
-              <span class="pro">No Finalizado</span>
+        {id_developer && developers.length > 0
+          ? developers.find((d) => d.id === id_developer).name
+          : accountType !== "Client" && (
+              <Link to={"/projects/" + id_project + "/" + id + "/assign"}>
+                <button class="primary ghost">Asignar desarrollador</button>
+              </Link>
             )}
-	      
-	      <img class="round" src={
-          "https://avatars.dicebear.com/api/jdenticon/" + id+ ".svg"
-                } alt="user" />
-    <h3>{name}</h3>
-	  <p>{"Descripción: " + description}</p>
-    <p>{estimated_time ? (
-      "Tiempo estimado: " + estimated_time ) : (
-        <div class="requirement-danger">
-      Tiempo estimado: No especificado
-      </div>
-    )}</p>
-	  <p>{"Prioridad " + priority}</p>
-    <p>Requerimiento creado el:    {moment(createdAt).format("DD/MM/YYYY")}</p>
-    <p>Última actualización:  {moment(updatedAt).fromNow()}</p>
-    <p>{deadline ? (
-      "Fecha de entrega: " +  moment(deadline).fromNow()) : (
-        <div class="requirement-danger">
-      Fecha de entrega: No establecido
-      </div>
-    )}</p>
-    <div class="buttons">
-    {id_developer && developers.length > 0 ?
-    (<img class="round-2" src={
-      "https://avatars.dicebear.com/api/bottts/" + id_developer + ".svg"
-                  } alt="user"/> 
-    ) : (
-      <></>
-    )}
-    {id_developer && developers.length > 0 ?
-        (
-              developers.find((d) => d.id === id_developer).name
-            ) : (
-    <Link to={"/projects/" + id_project + "/" + id + "/assign"}>
-		    <button class="primary ghost">
-			    Asignar desarrollador
-		    </button>
+        {accountType !== "Client" && (
+          <Link to={"/projects/" + id_project + "/" + id}>
+            <button class="primary">Editar requerimiento</button>
           </Link>
-           )}
-    <Link to={"/projects/" + id_project + "/" + id}>
-		    <button class="primary">
-			    Editar requerimiento
-		    </button>
-    </Link>
-    
+        )}
+      </div>
     </div>
-
-  </div>
   );
 }
 
