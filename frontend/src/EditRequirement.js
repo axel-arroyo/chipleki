@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useHistory, useParams } from "react-router-dom";
-import { Form, Button, Alert } from "react-bootstrap";
+import {Alert } from "react-bootstrap";
 import axios from "axios";
 import User from "./User";
 
@@ -12,11 +12,10 @@ function EditRequirement(props) {
     accountType === "Manager" || accountType === "Analyst" ? true : false;
   const { Project, Requirement } = useParams();
   const history = useHistory();
-
   const requirements = useSelector(
     (store) => store.requirementReducer.requirements
   );
-  const requirement = requirements.find((req) => req.id == Requirement);
+  const requirement = requirements.find((req) => req.id === parseInt(Requirement));
   
   const [name, setName] = useState(requirement.name);
   console.log(name);

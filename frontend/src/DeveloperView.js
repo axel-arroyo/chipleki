@@ -25,7 +25,7 @@ function DeveloperView(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },[]);
 
   return (
     <Row>

@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Row, Col, Button, Form, Card } from "react-bootstrap";
-import { Header, Comment } from "semantic-ui-react";
+import {Row} from "react-bootstrap";
+import {Comment} from "semantic-ui-react";
 import Comments from "./Comments.js";
 import User from "./User.js";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
 
 function CommentSection(props) {
   const tx = document.getElementsByTagName("textarea");
@@ -24,8 +22,7 @@ function CommentSection(props) {
   const user = User();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
-  const [validated, setValidated] = useState(false);
-  const history = useHistory();
+  const [setValidated] = useState(false);
 
   const handleComment = (e) => {
     setComment(e.target.value);
@@ -100,7 +97,7 @@ function CommentSection(props) {
               <Row>
                 <Comment.Group>
                   {comments
-                    .filter((c) => c.project == props.project)
+                    .filter((c) => c.project === parseInt(props.project))
                     .reverse()
                     .map((c) => (
                       <Comments
@@ -108,7 +105,7 @@ function CommentSection(props) {
                         reply={comments.filter((v) => v.replyOf === c.id)}
                       />
                     ))}
-                </Comment.Group>
+                </Comment.Group>  
               </Row>
             </div>
             </div>

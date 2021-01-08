@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import User from "./User";
 function Register(props) {
   const user = User();
