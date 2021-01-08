@@ -21,7 +21,6 @@ function Login(props) {
   };
 
   const handleSubmit = (e) => {
-    
     e.preventDefault();
     axios
       .post("http://localhost:8080/auth/login", {
@@ -29,10 +28,9 @@ function Login(props) {
         pass: pass,
       })
       .then((response) => {
-        console.log("Hola");
+        localStorage.setItem("token", response.data);
         dispatch(login());
         setEstado("OK");
-        localStorage.setItem("token", response.headers["auth-token"]);
         history.push("/home");
       })
       .catch((error) => {
@@ -41,30 +39,42 @@ function Login(props) {
   };
 
   return (
-  <div id="login-box">        
-  <div class="left">
-    <h1>Login</h1>
-    <form onSubmit={handleSubmit}>
-      {estado !== "" && (
-        <Alert variant={estado === "OK" ? "success" : "danger"}>{estado}</Alert>
-      )}
-      <div class="form-group">
-    <input type="text" name="email" onChange={handleEmail} placeholder="Enter email" required></input>
-    </div>
-    <div class="form-group">
-    <input type="password" name="pass" onChange={handlePass} placeholder="Enter password" required></input>
-    </div>
-    <div class="form-group"></div>
-    <input type="submit" name="login_submit" value="Ingresar" />
-    </form>
-  </div>
+    <div id="login-box">
+      <div class="left">
+        <h1>Login</h1>
+        <form onSubmit={handleSubmit}>
+          {estado !== "" && (
+            <Alert variant={estado === "OK" ? "success" : "danger"}>
+              {estado}
+            </Alert>
+          )}
+          <div class="form-group">
+            <input
+              type="text"
+              name="email"
+              onChange={handleEmail}
+              placeholder="Enter email"
+              required
+            ></input>
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              name="pass"
+              onChange={handlePass}
+              placeholder="Enter password"
+              required
+            ></input>
+          </div>
+          <div class="form-group"></div>
+          <input type="submit" name="login_submit" value="Ingresar" />
+        </form>
+      </div>
 
-  <div class="right">
-  <span class="loginwith"></span>
-  </div>
+      <div class="right">
+        <span class="loginwith"></span>
+      </div>
     </div>
-
-    
   );
 }
 

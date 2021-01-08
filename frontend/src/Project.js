@@ -17,31 +17,23 @@ function Project(props) {
   );
 
   return (
-    <Card border="dark" style={{ width: "18rem" }}>
-      <Card.Body>
-        <Card.Title>{id}</Card.Title>
-        <ListGroup variant="flush">
-          <ListGroup.Item>
-            Fecha de entrega prevista:{" "}
-            {moment(deliver_date).format("DD/MM/YYYY")}
-          </ListGroup.Item>
-          <ListGroup.Item>Cliente: {client_email}</ListGroup.Item>
-          <ListGroup.Item>Analista: {analyst_email}</ListGroup.Item>
-          <ListGroup.Item>Manager: {manager_email}</ListGroup.Item>
-          <ListGroup.Item>
-            Proyecto creado el: {moment(createdAt).format("DD/MM/YYYY")}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            Última actualización: {moment(updatedAt).fromNow()}
-          </ListGroup.Item>
-        </ListGroup>
-        {props.flag === "true" && (
-          <Button as={Link} to={"/projects/" + id} variant="primary">
-            Ver
-          </Button>
-        )}
-      </Card.Body>
-    </Card>
+    <div class="card-container">
+	    <span class="pro">No Finalizado</span>
+	        <img class="round" src={
+            "https://avatars.dicebear.com/api/bottts/" +
+              client_email +".svg"
+          } alt="user" />
+	    <h3><b>{"Proyecto #" + id}</b></h3>
+	    <p>{"Analista: " + analyst_email}</p>
+	    <p>{"Manager: " + manager_email}</p>
+      <p>{"Cliente:  " + client_email}</p>
+      <p>Proyecto creado el: {moment(createdAt).format("DD/MM/YYYY")}</p>
+      <Link to={"/projects/" + id}>
+	      <div class="buttons">
+		      <button class="primary">Ver</button>
+        </div>
+      </Link>
+    </div>
   );
 }
 

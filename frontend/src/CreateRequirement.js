@@ -100,8 +100,8 @@ function CreateRequirement(props) {
     <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
     <input type="text" name="name" onChange={handleName} placeholder="Enter name" required></input>
     <input type="description" name="desc" onChange={handleDesc} placeholder="Enter description" required></input>
-    <input type="text" name="time" onChange={handleEstimated} placeholder="Enter estimated time" required></input>
-    <input type="date" name="deadline" onChange={handleDeadline} required></input>
+    <input type="text" name="time" onChange={handleEstimated} placeholder="Enter estimated time"></input>
+    <input type="date" name="deadline" onChange={handleDeadline}></input>
     <input type="text" onChange={handlePriority} list="priorities" placeholder="Enter priority" />
     <datalist id="priorities">
     <select name="{NameOfYourField}">

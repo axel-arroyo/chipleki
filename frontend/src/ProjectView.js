@@ -13,7 +13,6 @@ function ProjectView(props) {
   const accountType = user ? user.type : undefined;
   const canCreate =
     accountType === "Manager" || accountType === "Analyst" ? true : false;
-
   const isLogged = useSelector((store) => store.authReducer.isLogged);
   const { thisId } = useParams();
   const dispatch = useDispatch();

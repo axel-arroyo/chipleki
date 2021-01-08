@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { useHistory, useParams, Redirect } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { Form, Button, Alert } from "react-bootstrap";
 import axios from "axios";
 import User from "./User";
@@ -106,8 +106,8 @@ function EditRequirement(props) {
     <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
     <input type="text" name="name" onChange={handleName} value={name} required></input>
     <input type="description" name="desc" onChange={handleDesc} value={desc} required></input>
-    <input type="text" name="time" onChange={handleEstimated} value={estimated} required></input>
-    <input type="date" name="deadline" onChange={handleDeadline} value={deadline} required></input>
+    <input type="text" name="time" onChange={handleEstimated} value={estimated}></input>
+    <input type="date" name="deadline" onChange={handleDeadline} value={deadline}></input>
     <input type="text" onChange={handlePriority} list="priorities" value={priority} />
     <datalist id="priorities">
     <select name="{NameOfYourField}">

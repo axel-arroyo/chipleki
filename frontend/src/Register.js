@@ -14,7 +14,6 @@ function Register(props) {
   const [estado, setEstado] = useState("");
   const [validated, setValidated] = useState(false);
 
-
   const handleEmail = (e) => {
     setEmail(e.target.value);
   };
@@ -64,44 +63,68 @@ function Register(props) {
   };
 
   return hasPermission ? (
-    <div id="login-box">        
-  <div class="left">
-    <h1>Registro</h1>
-    <form noValidate validated={validated} onSubmit={handleSubmit}>
-    {estado !== "" && (
-        <Alert variant={estado === "Usuario registrado" ? "success" : "danger"} >
-          {estado}
-        </Alert>
-      )}
-    <div class="form-group">
-    <input type="text" name="email" onChange={handleEmail} placeholder="Enter email" required></input>
-    </div>
-    <div class="form-group">
-    <input type="text" name="name" onChange={handleName} placeholder="Enter name" required></input>
-    </div>
-    <div class="form-group"></div>
-    <input type="text" onChange={handleType} list="types" placeholder="Select user type" />
-  <datalist id="types">
-    <select name="{NameOfYourField}">
-        <option>Manager</option>
-        <option>Analyst</option>
-        <option>Client</option>
-        ...
-    </select>
-</datalist>
+    <div id="login-box">
+      <div class="left">
+        <h1>Registro</h1>
+        <form noValidate validated={validated} onSubmit={handleSubmit}>
+          {estado !== "" && (
+            <Alert
+              variant={estado === "Usuario registrado" ? "success" : "danger"}
+            >
+              {estado}
+            </Alert>
+          )}
+          <div class="form-group">
+            <input
+              type="text"
+              name="email"
+              onChange={handleEmail}
+              placeholder="Enter email"
+              required
+            ></input>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              name="name"
+              onChange={handleName}
+              placeholder="Enter name"
+              required
+            ></input>
+          </div>
+          <div class="form-group"></div>
+          <input
+            type="text"
+            onChange={handleType}
+            list="types"
+            placeholder="Select user type"
+          />
+          <datalist id="types">
+            <select name="{NameOfYourField}">
+              <option>Manager</option>
+              <option>Analyst</option>
+              <option>Client</option>
+              <option>Developer</option>
+              ...
+            </select>
+          </datalist>
 
-    <div class="form-group">
-    <input type="password" name="pass" onChange={handlePass} placeholder="Enter password" required></input>
-    </div>
-    
-    <input type="submit" name="signup_submit" value="Registrar" />
-    </form>
-  </div>
-  
-  
-  <div class="right"></div>
-  </div>
+          <div class="form-group">
+            <input
+              type="password"
+              name="pass"
+              onChange={handlePass}
+              placeholder="Enter password"
+              required
+            ></input>
+          </div>
 
+          <input type="submit" name="signup_submit" value="Registrar" />
+        </form>
+      </div>
+
+      <div class="right"></div>
+    </div>
   ) : (
     <Alert variant="danger">Acceso Restringido</Alert>
   );
