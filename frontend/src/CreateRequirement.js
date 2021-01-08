@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form, Button, Alert, Row, Col } from "react-bootstrap";
+import {Alert} from "react-bootstrap";
 import User from "./User";
 import { useHistory, useParams } from "react-router-dom";
 
@@ -19,7 +19,7 @@ function CreateRequirement(props) {
   const [deadline, setDeadline] = useState(null);
   const [priority, setPriority] = useState("Alta");
   const [estado, setEstado] = useState("");
-  const [validated, setValidated] = useState(false);
+  const [setValidated] = useState(false);
 
   const handleName = (e) => {
     setName(e.target.value);

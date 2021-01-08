@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import User from "./User";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,7 @@ function CreateProject(props) {
   const [analyst, setAnalyst] = useState("");
   const [manager, setManager] = useState("");
   const [estado, setEstado] = useState("");
-  const [validated, setValidated] = useState(false);
+  const [setValidated] = useState(false);
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ function CreateProject(props) {
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+  },[]);
 
   const users = useSelector((store) => store.userReducer.users);
 

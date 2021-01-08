@@ -1,11 +1,8 @@
 import { useState } from "react";
-import moment from "moment";
-import { Button, Form, Collapse, Card} from "react-bootstrap";
+import { Form, Collapse} from "react-bootstrap";
 import { Comment } from "semantic-ui-react";
 import axios from "axios";
 import User from "./User.js";
-import reply from "./images/respuesta.png";
-import { Image } from "react-bootstrap";
 import MetaTags from 'react-meta-tags';
 function Comments(props) {
   const user = User();
@@ -65,12 +62,12 @@ function Comments(props) {
 
   <li class="comment user-comment">
 
-            <div class="info" >
-                <a href="#">{props.comment.creator}</a>
+            <div class="info">
+                <a href="#!">{props.comment.creator}</a>
                 <span>4 hours ago  </span>
                 
             </div>
-            <a class="avatar" href="#">
+            <a class="avatar" href="#!">
             <img src={
                   "https://avatars.dicebear.com/api/bottts/" +
                   props.comment.creator +
@@ -82,7 +79,7 @@ function Comments(props) {
             <div class="tab">
             <Comment.Actions>
               <div class="replyType">
-              <a onClick= {() => setOpen(!open)} aria-controls="example-collapse-text"
+              <a href="#!" onClick= {() => setOpen(!open)} aria-controls="example-collapse-text"
                       aria-expanded={open}
                       variant="secondary"
                       > Responder
@@ -121,7 +118,7 @@ function Comments(props) {
                   <div class="tab3">
                   <li class="comment author-comment">
                         <div class="info" >
-                <a href="#">{props.comment.creator}</a>
+                <a href="#!">{props.comment.creator}</a>
                 <span>3 hours ago</span>
                 <img src={
                   "https://avatars.dicebear.com/api/bottts/" +

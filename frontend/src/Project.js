@@ -1,4 +1,3 @@
-import { Card, Button, ListGroup } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
@@ -6,12 +5,10 @@ import moment from "moment";
 function Project(props) {
   const {
     id,
-    deliver_date,
     client_email,
     analyst_email,
     manager_email,
     createdAt,
-    updatedAt,
   } = useSelector((s) =>
     s.projectReducer.projects.find((p) => p.id === props.id)
   );
