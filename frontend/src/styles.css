@@ -1024,6 +1024,7 @@ Linea vertical del boton
 
 h3 {
   margin: 10px 0;
+  word-wrap: break-word;
 }
 
 h6 {
@@ -1047,6 +1048,7 @@ p {
   max-width: 100%;
   text-align: center;
   margin-bottom: 30px;
+  margin-top: 20px;
 }
 
 .card-container .pro {
@@ -1080,18 +1082,22 @@ p {
 }
 
 button.primary {
-  background-color: #03bfcb;
-  border: 1px solid #03bfcb;
-  border-radius: 3px;
-  color: #231e39;
-  font-family: Montserrat, sans-serif;
-  font-weight: 500;
-  padding: 10px 25px;
+	background-color: #03BFCB;
+	border: 1px solid #03BFCB;
+	border-radius: 3px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+  font-weight: 550;
+  font-size: 13px;
+  padding: 5px 70px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+
 }
 
 button.primary.ghost {
-  background-color: transparent;
-  color: #02899c;
+	background-color: transparent;
+  color: #02899C;
 }
 
 .skills {
@@ -1115,3 +1121,108 @@ button.primary.ghost {
   margin: 0 7px 7px 0;
   padding: 7px;
 }
+
+.topRight {
+  top:0;
+  right:0;
+}
+
+.card-container .round-2 {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+  padding: 1px;
+  height: 2em;
+  margin-right: 5px;
+}
+
+.card-container-module{
+	background-color: #231E39;
+	border-radius: 5px;
+	box-shadow: 0px 10px 20px -10px rgba(0,0,0,0.75);
+	color: #B3B8CD;
+	padding-top: 30px;
+	position: relative;
+	width: 350px;
+	max-width: 100%;
+  text-align: center;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  margin-left: 30px;
+}
+
+.card-container-module .round {
+	border: 1px solid #03BFCB;
+	border-radius: 50%;
+  padding: 1px;
+  height: 4em;
+}
+
+.card-container-module .formulario {
+  width: 100%;
+  text-align:center;
+  display: inline-block;
+  margin-left: 105px;
+  
+}
+button.primary-module {
+	background-color: #03BFCB;
+	border: 1px solid #03BFCB;
+	border-radius: 3px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+  font-weight: 550;
+  font-size: 13px;
+  padding: 5px 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+
+}
+
+button.danger-module {
+	background-color: #b9030a;
+	border: 1px solid #b9030a;
+	border-radius: 3px;
+	color: #231E39;
+	font-family: Montserrat, sans-serif;
+  font-weight: 550;
+  font-size: 13px;
+  padding: 5px 30px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  text-align: center;
+  margin-left: 10px;
+
+}
+
+.requirement-danger{
+color: yellow;
+}
+
+/*
+Search Bar
+*/
+.search-sec{
+  padding: 2rem;
+}
+.search-slt{
+  display: block;
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  background-color: #fff;
+  background-image: none;
+
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+  margin-top: 20px;
+  
+}
+.wrn-btn{
+  width: 100%;
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  height: calc(3rem + 2px) !important;
+  border-radius:0;
+}
+

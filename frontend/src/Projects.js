@@ -60,43 +60,7 @@ function Projects(props) {
             )
             .map((v) => (
               <Col key={v.id} md={3}>
-                <div class="card-container">
-                  <span class="pro">No Finalizado</span>
-                  <img
-                    class="round"
-                    src={
-                      "https://avatars.dicebear.com/api/bottts/" +
-                      v.client_email +
-                      ".svg"
-                    }
-                    alt="user"
-                  />
-                  <h3>
-                    <b>{"Proyecto #" + v.id}</b>
-                  </h3>
-                  <p>{"Analista: " + v.analyst_email}</p>
-                  <p>{"Manager: " + v.manager_email}</p>
-                  <p>{"Cliente:  " + v.client_email}</p>
-                  <div class="buttons">
-                    <Button class="primary" as={Link} to={"/projects/" + v.id}>
-                      Ver
-                    </Button>
-                  </div>
-                  <div class="skills">
-                    <h6>
-                      <b>Requerimientos</b>
-                    </h6>
-                    <ul>
-                      <li>UI / UX</li>
-                      <li>Front End Development</li>
-                      <li>HTML</li>
-                      <li>CSS</li>
-                      <li>JavaScript</li>
-                      <li>React</li>
-                      <li>Node</li>
-                    </ul>
-                  </div>
-                </div>
+                <Project id={v.id} flag={canCreate} />
               </Col>
             ))
         ) : (

@@ -106,8 +106,8 @@ function EditRequirement(props) {
     <h3 class="fs-subtitle">Asegúrese de rellenar los campos</h3>
     <input type="text" name="name" onChange={handleName} value={name} required></input>
     <input type="description" name="desc" onChange={handleDesc} value={desc} required></input>
-    <input type="text" name="time" onChange={handleEstimated} value={estimated} required></input>
-    <input type="date" name="deadline" onChange={handleDeadline} value={deadline} required></input>
+    <input type="text" name="time" onChange={handleEstimated} value={estimated}></input>
+    <input type="date" name="deadline" onChange={handleDeadline} value={deadline}></input>
     <input type="text" onChange={handlePriority} list="priorities" value={priority} />
     <datalist id="priorities">
     <select name="{NameOfYourField}">

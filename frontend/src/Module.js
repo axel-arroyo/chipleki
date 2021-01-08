@@ -96,40 +96,42 @@ function Module(props) {
   }
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Body>
-        <Card.Title>{name}</Card.Title>
-        <ListGroup variant="flush">
-          <ListGroup.Item>Descripción: {description}</ListGroup.Item>
-          <ListGroup.Item>Prioridad: {priority}</ListGroup.Item>
-          <ListGroup.Item>
-            Tiempo estimado: {estimated_time ? estimated_time : "No definido"}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            Fecha límite: {moment(deadline).format("DD/MM/YY")}
-          </ListGroup.Item>
-          {showForm && (
-            <ListGroup.Item>
+    <div class="card-container-module">
+	        <img class="round" src={
+          "https://avatars.dicebear.com/api/jdenticon/" + id+ ".svg"
+                } alt="user" />
+	    <h3><b>{name}</b></h3>
+      <p>{"Descripción  " + description}</p>
+      <p>{"Prioridad:  " + priority}</p>
+      <p>{"Tiempo estimado:  " + estimated_time}</p>
+      <p>{"Fecha límite:  " + moment(deadline).format("DD/MM/YY")}</p>
+      {showForm && (
+        <div>
+        
               <Form noValidate validated={validated} onSubmit={handleSumbit}>
-                <Form.Control onChange={handleValue} type="number" required />
-                <Button type="submit" variant="primary" placeholder="valor">
+              <div class="formulario">
+                <Form.Control onChange={handleValue} type="number" required/>
+                </div>
+                <button type="submit" class="primary-module" placeholder="valor">
                   Enviar
-                </Button>
+                </button>
+                <button onClick={handleForm} class="danger-module">
+              Cancelar
+            </button>
               </Form>
-            </ListGroup.Item>
+     
+        
+        
+        </div>
           )}
           {showForm ? (
-            <Button onClick={handleForm} variant="danger">
-              Cancelar
-            </Button>
+            <></>
           ) : (
-            <Button onClick={handleForm} variant="primary">
+            <button onClick={handleForm} class="primary">
               Enviar cotización
-            </Button>
+            </button>
           )}
-        </ListGroup>
-      </Card.Body>
-    </Card>
+    </div>
   );
 }
 

@@ -60,10 +60,10 @@ function Requirement(props) {
   );
 
   return (
-    <Card style={{ width: "18rem" }}>
-      <Card.Body>
-        {canDelete ? (
+    <div class="card-container">
+       {canDelete ? (
           <>
+          <div class="topRight">
             <Image src={trash} className="trash" alt="" onClick={handleShow} />
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
@@ -79,51 +79,64 @@ function Requirement(props) {
                 </Button>
               </Modal.Footer>
             </Modal>
+            </div>
           </>
         ) : (
           <></>
         )}
-
-        <Card.Title>{name}</Card.Title>
-        <ListGroup variant="flush">
-          <ListGroup.Item>Descripción: {description}</ListGroup.Item>
-          <ListGroup.Item>Prioridad: {priority}</ListGroup.Item>
-          <ListGroup.Item>
-            Desarrollador:&nbsp;
-            {id_developer && developers.length > 0 ? (
+            {finished ? (
+              <span class="pro">Finalizado</span>
+            ) : (
+              <span class="pro">No Finalizado</span>
+            )}
+	      
+	      <img class="round" src={
+          "https://avatars.dicebear.com/api/jdenticon/" + id+ ".svg"
+                } alt="user" />
+    <h3>{name}</h3>
+	  <p>{"Descripción: " + description}</p>
+    <p>{estimated_time ? (
+      "Tiempo estimado: " + estimated_time ) : (
+        <div class="requirement-danger">
+      Tiempo estimado: No especificado
+      </div>
+    )}</p>
+	  <p>{"Prioridad " + priority}</p>
+    <p>Requerimiento creado el:    {moment(createdAt).format("DD/MM/YYYY")}</p>
+    <p>Última actualización:  {moment(updatedAt).fromNow()}</p>
+    <p>{deadline ? (
+      "Fecha de entrega: " +  moment(deadline).fromNow()) : (
+        <div class="requirement-danger">
+      Fecha de entrega: No establecido
+      </div>
+    )}</p>
+    <div class="buttons">
+    {id_developer && developers.length > 0 ?
+    (<img class="round-2" src={
+      "https://avatars.dicebear.com/api/bottts/" + id_developer + ".svg"
+                  } alt="user"/> 
+    ) : (
+      <></>
+    )}
+    {id_developer && developers.length > 0 ?
+        (
               developers.find((d) => d.id === id_developer).name
             ) : (
-              <Link to={"/projects/" + id_project + "/" + id + "/assign"}>
-                Asignar
-              </Link>
-            )}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            Proyecto creado el: {moment(createdAt).format("DD/MM/YYYY")}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            Última actualización: {moment(updatedAt).fromNow()}
-          </ListGroup.Item>
-          <ListGroup.Item>
-            Estado:{" "}
-            {finished ? (
-              <div className="state finished"></div>
-            ) : (
-              <div className="state unfinished"></div>
-            )}
-          </ListGroup.Item>
-        </ListGroup>
-        {props.flag && (
-          <Button
-            as={Link}
-            to={"/projects/" + id_project + "/" + id}
-            variant="primary mr-3"
-          >
-            Editar
-          </Button>
-        )}
-      </Card.Body>
-    </Card>
+    <Link to={"/projects/" + id_project + "/" + id + "/assign"}>
+		    <button class="primary ghost">
+			    Asignar desarrollador
+		    </button>
+          </Link>
+           )}
+    <Link to={"/projects/" + id_project + "/" + id}>
+		    <button class="primary">
+			    Editar requerimiento
+		    </button>
+    </Link>
+    
+    </div>
+
+  </div>
   );
 }
 
