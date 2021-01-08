@@ -315,9 +315,6 @@ function App() {
                 <Nav.Link as={Link} to="/home">
                   Home
                 </Nav.Link>
-                <Nav.Link as={Link} to="/projects">
-                  Projects
-                </Nav.Link>
               </Nav>
               <Nav>
                 <Nav.Link as={Link} to="/login">
