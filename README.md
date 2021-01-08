@@ -1,26 +1,24 @@
 Proyecto Análisis y Diseño de Software 2020-2 grupo Chipleki Chipleki ®  
 Disponible en Github: https://github.com/axel-arroyo/chipleki
 
+Por temas de compatibilidad y peso de archivos, las dependencias se deben instalar manualmente como se indica a continuación
+
 # Dependencias
 ## Backend
 npm i express sequelize pg pg-hstore bcrypt jsonwebtoken dotenv cors
 
 npm i -D nodemon sequelize-cli
 ## Frontend
-npx create-react-app frontend --use-npm      (frontend es el nombre de la carpeta a crear, pongan lo que quieran)
+Primero crear el proyecto react con el siguiente comando, donde frontend es el nombre del proyecto, dentro van los archivos respectivos del repositorio.
+
+npx create-react-app frontend --use-npm
+
+Dependencias del frontend:
 
 npm i react-bootstrap bootstrap axios jwt-decode @reduxjs/toolkit react-redux react-router-dom moment semantic-ui-react react-table react-meta-tags
 
-# Por Implementar
-* ~~Agregar Requerimientos al proyecto (Historia de Usuario)~~
-* ~~Vista de Requerimientos (Con redux supongo, similar a vista de proyectos)~~
-* ~~Editar requerimientos (tanto en redux como en la base de datos)~~
-  + No se actualizan en redux, pero se vuelven a obtener al entrar a la vista, entonces no importa (?)
-* ~~Analista pueda registrar solamente clientes, no cualquier usuario~~
-* ~~Cliente pueda ingresar comentarios al proyecto~~
-* Al crear un proyecto autoasignar Manager o Analyst, según corresponda
-* ~~En el backend agregar autentificación por token (Lo implementan al final del video de login backend), quizás con las restricciones del frontend no es necesario, esto para despúes.~~
-#### Cosas a futuro
-* ~~Quizás cambiar la Primary Key de los usuarios, managers, etc. al correo, ya deberían ser únicos y es más intuitivo que una ID.~~
-* ~~Que el usuario ingresado pueda solamente ver sus projectos (y no los ajenos)~~
-* ¿Se puede editar la información de un proyecto (Cliente, Analista, Fecha de entrega, etc) En caso de que si, falta implementarlo
+# Despliegue
+Dado que para utilizar la página se deben tener cuentas de usuario, y para crear estos se necesita una cuenta con permisos tipo "Manager", la primera cuenta del sistema debe ser creada por medio de Postman o un programa similar, un ejemplo del POST respectivo se encuentra en la imagen "ejemplo_postman" del repositorio, indicando un token de autorización como se indica en la imagen "token", un token que puede utilizarse se encuentra en el archivo jwt. Teniendo la cuenta creada, se puede iniciar sesión en la plataforma con el correo y contraseña respectivos y manejar la plataforma como se esperaría, es decir, crear las cuentas necesarias, proyectos y requerimientos deseados, etc.
+
+Para la tabla de asignación de desarrolladores se tiene un campo de Rating, el cual indica "New Developer" cuando un desarrollador aún no ha sido evaluado, no nos centramos en una forma de evaluación pues no corresponde con nuestro escenario, pero en caso que quiera ser probado, se puede evaluar a un desarrollador por medio de Postman indicando su correo y rating, como lo ejemplificado en la imagen "rating" (es necesario el auth-token). Un desarrollador puede ser evaluado múltiples veces.
+
