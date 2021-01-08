@@ -3,10 +3,10 @@ import axios from "axios";
 
 const mean = (ratings) => {
   console.log(ratings);
-  const mean = Number(
+  const promedio = Number(
     ratings.reduce((total, next) => total + next.rating, 0) / ratings.length
   ).toFixed(1);
-  return isNaN(mean) ? "New Developer" : mean;
+  return isNaN(promedio) ? "New Developer" : promedio;
 };
 
 const handleSubmit = (id_dev) => {

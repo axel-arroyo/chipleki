@@ -8,7 +8,7 @@ import "./table.css";
 import { COLUMNS } from "./columns";
 
 function Assign(props) {
-  const Requirement = useParams();
+  const { Requirement } = useParams();
   const [developers, setDevelopers] = useState([]);
 
   useEffect(() => {

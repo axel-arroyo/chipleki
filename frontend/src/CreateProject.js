@@ -17,7 +17,6 @@ function CreateProject(props) {
   const [analyst, setAnalyst] = useState("");
   const [manager, setManager] = useState("");
   const [estado, setEstado] = useState("");
-  const [setValidated] = useState(false);
   const history = useHistory();
 
   const dispatch = useDispatch();
@@ -88,7 +87,6 @@ function CreateProject(props) {
           setEstado("Error creando el proyecto");
         });
     }
-    setValidated(true);
   };
 
   return hasPermission ? (

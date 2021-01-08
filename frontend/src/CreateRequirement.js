@@ -19,7 +19,6 @@ function CreateRequirement(props) {
   const [deadline, setDeadline] = useState(null);
   const [priority, setPriority] = useState("Alta");
   const [estado, setEstado] = useState("");
-  const [setValidated] = useState(false);
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -77,7 +76,6 @@ function CreateRequirement(props) {
           setEstado("Error creando el requerimiento");
         });
     }
-    setValidated(true);
   };
 
   return hasPermission ? (
