@@ -19,7 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Comment.init(
     {
-      comment: DataTypes.STRING,
+      comment: DataTypes.STRING(4096),
       creator: DataTypes.STRING,
       replyOf: DataTypes.INTEGER,
       project: DataTypes.INTEGER,

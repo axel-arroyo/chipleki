@@ -22,7 +22,6 @@ function CommentSection(props) {
   const user = User();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
-  const [validated, setValidated] = useState(false);
 
   const handleComment = (e) => {
     setComment(e.target.value);
@@ -70,7 +69,6 @@ function CommentSection(props) {
           console.log(error);
         });
     }
-    setValidated(true);
   };
 
   return (

@@ -267,9 +267,6 @@
 .ui.small.comments {
   font-size: 0.92857143rem;
 }
-.ui.comments {
-  font-size: 1rem;
-}
 .ui.large.comments {
   font-size: 1.14285714rem;
 }
@@ -487,12 +484,6 @@ button.social-signin.a {
 /*custom font*/
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
-/*basic reset*/
-* {
-  margin: 0;
-  padding: 0;
-}
-
 html {
   height: 100%;
   /*Image only BG fallback*/
@@ -500,9 +491,6 @@ html {
   /*background = gradient + image pattern combo*/
 }
 
-body {
-  font-family: montserrat, arial, verdana, serif;
-}
 /*form styles*/
 #msform {
   width: 400px;
@@ -1015,8 +1003,6 @@ Linea vertical del boton
   height: 4px;
   top: calc(50% - 2px);
 }
-
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
 
 * {
   box-sizing: border-box;

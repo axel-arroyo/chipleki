@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       comment: {
-        type: Sequelize.STRING,
+        type: Sequelize.STRING(4096),
       },
       creator: {
         type: Sequelize.STRING,

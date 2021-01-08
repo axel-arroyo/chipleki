@@ -126,16 +126,18 @@ function Requirement(props) {
         ) : (
           <></>
         )}
-        {id_developer && developers.length > 0 ? (
-          developers.find((d) => d.id === id_developer).name
-        ) : (
-          <Link to={"/projects/" + id_project + "/" + id + "/assign"}>
-            <button class="primary ghost">Asignar desarrollador</button>
+        {id_developer && developers.length > 0
+          ? developers.find((d) => d.id === id_developer).name
+          : canDelete && (
+              <Link to={"/projects/" + id_project + "/" + id + "/assign"}>
+                <button class="primary ghost">Asignar desarrollador</button>
+              </Link>
+            )}
+        {canDelete && (
+          <Link to={"/projects/" + id_project + "/" + id}>
+            <button class="primary">Editar requerimiento</button>
           </Link>
         )}
-        <Link to={"/projects/" + id_project + "/" + id}>
-          <button class="primary">Editar requerimiento</button>
-        </Link>
       </div>
     </div>
   );
