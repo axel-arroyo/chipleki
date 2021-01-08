@@ -137,8 +137,6 @@ function Requirement(props) {
     </div>
 
   </div>
-  
-       
   );
 }
 

@@ -1,35 +1,24 @@
 "use strict";
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable("Requirements", {
+    await queryInterface.createTable("Technologies", {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER,
       },
-      name: {
-        type: Sequelize.STRING,
-      },
-      description: {
-        type: Sequelize.STRING,
-      },
-      finished: {
+      js: {
         type: Sequelize.BOOLEAN,
       },
-      estimated_time: {
-        type: Sequelize.STRING,
+      react: {
+        type: Sequelize.BOOLEAN,
       },
-      deadline: {
-        type: Sequelize.DATEONLY,
+      nodejs: {
+        type: Sequelize.BOOLEAN,
       },
-      id_project: {
-        type: Sequelize.INTEGER,
-        references: {
-          model: "Projects",
-          key: "id",
-          as: "id_project",
-        },
+      github: {
+        type: Sequelize.BOOLEAN,
       },
       id_developer: {
         type: Sequelize.INTEGER,
@@ -38,9 +27,6 @@ module.exports = {
           key: "id",
           as: "id_developer",
         },
-      },
-      priority: {
-        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
@@ -53,6 +39,6 @@ module.exports = {
     });
   },
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable("Requirements");
+    await queryInterface.dropTable("Technologies");
   },
 };

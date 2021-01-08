@@ -12,5 +12,6 @@ app.use("/analyst", require("./routes/analystRoutes"));
 app.use("/project", require("./routes/projectRoutes"));
 app.use("/auth", require("./routes/authRoutes"));
 app.use("/comment", require("./routes/commentRoutes"));
+app.use("/developer", require("./routes/developerRoutes"));
 
 app.listen(8080, console.log("El servidor está corriendo en el puerto 8080"));
